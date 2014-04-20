@@ -1,0 +1,111 @@
+body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+span.pageTitle {
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin-bottom: 20px;
+    font-size: 21px;
+    line-height: 40px;
+    color: #333;
+    border: 0;
+    border-bottom: 1px solid #e5e5e5;
+}
+.pageTitle small {
+    font-size: 15px;
+    color: #999;
+}
+
+.welcome {
+    /*float:left;*/
+    color: #999;
+    /*text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+    position: relative;
+    top: 65px;
+    left: -230px;*/
+    margin-bottom:10px;
+    text-align:right;
+    width:100%;
+}
+
+.mainContent {
+    padding:20px 0 10px 0;
+    min-height:500px;
+}
+
+/* FOOTER Start */
+.footer_container {
+    width: 100%;
+    background: #000;
+    height: 66px;
+    margin-top:10px;
+}
+
+.footer {
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+ul.logos {
+    margin: 0;
+    padding: 0;
+    display: block;
+    position: relative;
+    float: left;
+    list-style: none;
+}
+
+ul.logos li {
+    display: inline;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    vertical-align: top;
+}
+
+ul.logos li a.nih {
+    margin: 17px 10px 0 14px;
+}
+
+ul.logos li a.hhs {
+    margin: 5px 15px 0 8px;
+}
+
+ul.logos li a.gme {
+    margin: 16px 10px 0 10px;
+}    
+
+/* FOOTER End */
+
+
+textarea.text-box.multi-line {
+    width:400px;
+    height:100px;
+}
+
+span.userName, span.roleName {
+    font-weight:bold;
+    color: #08c;
+}
+
+span.required {
+    color:red;
+}
+
+.long-textbox {
+    width:80%;
+}
+.small-Control {
+    width:100px;
+}
+.RadioButton input, .RadioButton label { 
+    float:left; 
+    padding: 0 10px 0 2px;
+}
+.CheckboxList input, .CheckboxList label { 
+    float:left; 
+    padding: 0 10px 0 2px;
+}
