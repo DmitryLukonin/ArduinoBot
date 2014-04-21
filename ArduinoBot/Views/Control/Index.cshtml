@@ -15,11 +15,7 @@
 
     <link href="/content/themes/smoothness/jquery-ui-1.10.3.custom.css" rel="stylesheet" />
 
-    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
-
-
-    @*    <script src="~/Scripts/jquery.jqGrid.src.js"></script>*@
-
+    <script src="~/Scripts/jquery-2.1.0.min.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -36,7 +32,6 @@
 
 
             // ========================== Commands
-
             // configs
             var limitCommandTable = 100;
             var updateTimerCommand = 1000;
@@ -144,9 +139,6 @@
                     $("#btnSubmitCommand").click();
                 }
             });
-
-
-
 
             function centeredPopupWindow(url, winName, w, h, scroll) {
                 var LeftPosition = (screen.width) ? (screen.width - w) / 2 : 0;
@@ -274,10 +266,9 @@
                                 <button title="MoveForvard" class="actionButton">Sleep: Doze</button><br />
                                 <button title="MoveForvard" class="actionButton">Sleep: Deep</button>
                             </td>
-                </td>
                 <td></td>
             </tr>
-        </table>
+                    </table>
         </td>
         </tr>
         <tr>

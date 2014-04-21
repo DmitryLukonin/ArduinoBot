@@ -25,7 +25,7 @@ namespace ArduinoBot.Controllers
             return View(model);
         }
 
-        [Authorize]
+       
         [HttpPost]
         public ActionResult Index(Command command)
         {
