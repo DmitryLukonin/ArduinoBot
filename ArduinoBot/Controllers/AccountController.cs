@@ -50,7 +50,6 @@ namespace ArduinoBot.Controllers
                 if (user != null)
                 {
                     await SignInAsync(user, model.RememberMe);
-                    //FormsAuthentication.SetAuthCookie(model.UserName, false);
 
                     if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
                          && !returnUrl.StartsWith("//") && !returnUrl.StartsWith("/\\"))

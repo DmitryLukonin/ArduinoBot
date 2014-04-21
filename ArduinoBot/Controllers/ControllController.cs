@@ -14,7 +14,7 @@ namespace ArduinoBot.Controllers
         // GET: /Controll/
 
         [HttpGet]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "User")]
         public ActionResult Index()
         {
 

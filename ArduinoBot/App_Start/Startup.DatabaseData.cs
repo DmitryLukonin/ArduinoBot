@@ -42,35 +42,38 @@ namespace ArduinoBot
             }
         }
 
-
         public void CreateUsers()
         {
 
-            //            sqllocaldb.exe stop v11.0
-            //sqllocaldb.exe delete v11.0
+            //  sqllocaldb.exe stop v11.0
+            //  sqllocaldb.exe delete v11.0
 
             //  input "Enable-Migrations"
             //  input "Add-Migration init"
             //  input "Update-Database"
 
-
             var userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>());
+            IdentityUser user = null;
 
-            if (userManager.FindByName("Admin") == null)
+            user = userManager.FindByName("Admin");
+            if (user == null)
             {
-                var user = new Microsoft.AspNet.Identity.EntityFramework.IdentityUser();
+                user = new IdentityUser();
                 user.UserName = "Admin";
                 userManager.Create(user, WebConfigurationManager.AppSettings["AdminAccount"]);  // potential problem with password
-                userManager.AddToRole(user.Id, "Admin");
             }
+            userManager.AddToRole(user.Id, "Admin");
+            userManager.AddToRole(user.Id, "User");
 
-            if (userManager.FindByName("Bot") == null)
+            user = userManager.FindByName("Bot");
+            if (user == null)
             {
-                var user = new Microsoft.AspNet.Identity.EntityFramework.IdentityUser();
+                user = new IdentityUser();
                 user.UserName = "Bot";
                 userManager.Create(user, WebConfigurationManager.AppSettings["BotAccessToken"]);  // potential problem with password
                 userManager.AddToRole(user.Id, "Bot");
             }
+            userManager.AddToRole(user.Id, "User");
         }
 
 
