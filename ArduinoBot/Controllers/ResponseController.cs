@@ -20,14 +20,14 @@ namespace ArduinoBot.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, response);
         }
 
-        [System.Web.Http.HttpGet]
+        [HttpGet]
         public HttpResponseMessage GetAllResponses()
         {
             var response = SessionHelper.Responses();
             return Request.CreateResponse(HttpStatusCode.OK, response);
         }
 
-        [System.Web.Http.HttpGet]
+        [HttpGet]
         public HttpResponseMessage GetAllResponses(long id)
         {
             var response = SessionHelper.Responses().Where(x => x.Id > id);

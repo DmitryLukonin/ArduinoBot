@@ -8,19 +8,17 @@ using ArduinoBot.Models;
 
 namespace ArduinoBot.Controllers
 {
-    public class ControllController : Controller
+    public class ControlController : Controller
     {
         //
-        // GET: /Controll/
+        // GET: /Control/
 
         [HttpGet]
         [Authorize(Roles = "User")]
         public ActionResult Index()
         {
-
             ViewBag.Commands = AppSession.Commands;
             ViewBag.Responses = AppSession.Responses;
-
 
             var model = new Command();
 
@@ -31,10 +29,7 @@ namespace ArduinoBot.Controllers
         [HttpPost]
         public ActionResult Index(Command command)
         {
-
-
             SessionHelper.CommandAdd(command);
-
 
             return RedirectToAction("Index");
         }
