@@ -22,8 +22,20 @@ namespace ArduinoBot
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
+                name: "BotApi",
+                routeTemplate: "api/{controller}/Bot/{action}/{id}",
+                defaults: new { id = RouteParameter.Optional }
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "CoreApi",
+                routeTemplate: "api/{controller}/Core/{action}/{id}",
+                defaults: new { id = RouteParameter.Optional }
+            );
+
+            config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
+                routeTemplate: "api/{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
 
