@@ -1,0 +1,28 @@
+﻿.commandFieldset fieldset{
+    border-style: solid;
+    border-width: thin;
+    border-color: inherit;
+    padding: 1px;
+    margin: 1px;
+    width: 350px;
+}
+
+.commandChild {
+    width: 350px;
+    height: 300px;
+}
+
+.commandChildLeft {
+    width: 200px;
+}
+
+.commandChildRight {
+    width: 350px;
+}
+
+.commandFieldset legend {
+    border-style: none;
+    width: auto;
+}
+
+

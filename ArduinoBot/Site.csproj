@@ -217,6 +217,7 @@
     <Content Include="AppSettings.config.user">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Content\ArduinoSite.css" />
     <Content Include="Content\body.css" />
     <Content Include="Content\bootstrap-mvc-validation.css" />
     <Content Include="Content\bootstrap-responsive.css" />

@@ -1,21 +1,9 @@
 ﻿@model ArduinoBot.Models.Command
 
 @{
-    Layout = null;
+@*    Layout = null;*@
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-
-    <link href="/content/themes/smoothness/jquery-ui-1.10.3.custom.css" rel="stylesheet" />
-
-    <script src="~/Scripts/jquery-2.1.0.min.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -220,126 +208,139 @@
         </table>
     </div>
 
-    <fieldset>
-        <legend>Command</legend>
-        <table>
-            <tr>
-                <td>
-                    <div class="editor-label">
-                        @Html.LabelFor(model => model.Cmd)
-                    </div>
-                </td>
-                <td rowspan="10">
-                    <table style="text-align: center">
-                        <tr>
-                            <td></td>
-                            <td>
-                                <button title="MoveForvard" class="actionButton">Go Forward</button>
-                            </td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td><button title="HeadPingL" class="actionButton">Ping Left</button></td>
-                            <td>
-                                <button title="HeadPing" class="actionButton">Ping</button><br />
-                                <button title="HeadLight" class="actionButton">Check light</button>
-                            </td>
-                            <td><button title="HeadPingR" class="actionButton">Ping Right</button></td>
-                        </tr>
-                        <tr>
-                            <td><button title="MoveLeft" class="actionButton">Go Left</button></td>
-                            <td><button title="MoveStop" class="actionButton">Stop</button></td>
-                            <td><button title="MoveRight" class="actionButton">Go Right</button></td>
-                        </tr>
-                        <tr>
-                            <td><button title="MoveRightTurn" class="actionButton">U-TurnRight</button></td>
-                            <td>
-                                <button title="MoveBack" class="actionButton">Go Back</button>
-                            </td>
-                            <td><button title="MoveLeftTurn" class="actionButton">U-TurnLeft</button></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <button title="MoveForvard" class="actionButton">Moode: Auto</button><br />
-                                <button title="MoveForvard" class="actionButton">Moode: Manual</button>
-                            <td>
-                                <button title="MoveForvard" class="actionButton">Sleep: Doze</button><br />
-                                <button title="MoveForvard" class="actionButton">Sleep: Deep</button>
-                            </td>
-                <td></td>
-            </tr>
-                    </table>
-        </td>
-        </tr>
-        <tr>
-            <td>
-                <div class="editor-field">
-                    @Html.EditorFor(model => model.Cmd)
-                    @Html.ValidationMessageFor(model => model.Cmd)
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div class="editor-label">
-                    @Html.LabelFor(model => model.Type)
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div class="editor-field">
-                    @Html.EditorFor(model => model.Type)
-                    @Html.ValidationMessageFor(model => model.Type)
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div class="editor-label">
-                    @Html.LabelFor(model => model.MsExTime)
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div class="editor-field">
-                    @Html.EditorFor(model => model.MsExTime)
-                    @Html.ValidationMessageFor(model => model.MsExTime)
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div class="editor-label">
-                    @Html.LabelFor(model => model.MsDelayAfterExTime)
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div class="editor-field">
-                    @Html.EditorFor(model => model.MsDelayAfterExTime)
-                    @Html.ValidationMessageFor(model => model.MsDelayAfterExTime)
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <input type="button" id="btnSubmitCommand" value="Submit Command" />
+<div class="commandFieldset">
+<fieldset>
+    <legend><h3>Command</h3></legend>
 
-            </td>
-        </tr>
-        </table>
-    </fieldset>
+<table>
+    <tr>
+    <td>
+            <fieldset class="commandChild commandChildLeft">
+                <legend><h5>Custom command</h5></legend>
+                <table>
 
-    <iframe id="myFrame"></iframe>
-    <button id="myButton">
-        Refresh IFrame
-    </button>
+                    <tr>
+                        <td>
+                            <div class="editor-label">
+                                @Html.LabelFor(model => model.Cmd)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="editor-field">
+                                @Html.EditorFor(model => model.Cmd)
+                                @Html.ValidationMessageFor(model => model.Cmd)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="editor-label">
+                                @Html.LabelFor(model => model.Type)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="editor-field">
+                                @Html.EditorFor(model => model.Type)
+                                @Html.ValidationMessageFor(model => model.Type)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="editor-label">
+                                @Html.LabelFor(model => model.MsExTime)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="editor-field">
+                                @Html.EditorFor(model => model.MsExTime)
+                                @Html.ValidationMessageFor(model => model.MsExTime)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="editor-label">
+                                @Html.LabelFor(model => model.MsDelayAfterExTime)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="editor-field">
+                                @Html.EditorFor(model => model.MsDelayAfterExTime)
+                                @Html.ValidationMessageFor(model => model.MsDelayAfterExTime)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="button" id="btnSubmitCommand" value="Submit Command" />
 
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+    </td>
+    <td>
+            <fieldset class="commandChild commandChildRight">
+                <legend><h5>Presaved commands</h5></legend>
+                <table style="text-align: center">
+                    <tr>
+                        <td></td>
+                        <td>
+                            <button title="MoveForvard" class="actionButton">Go Forward</button>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button title="HeadPingL" class="actionButton">Ping Left</button></td>
+                        <td>
+                            <button title="HeadPing" class="actionButton">Ping</button><br />
+                            <button title="HeadLight" class="actionButton">Check light</button>
+                        </td>
+                        <td>
+                            <button title="HeadPingR" class="actionButton">Ping Right</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button title="MoveLeft" class="actionButton">Go Left</button></td>
+                        <td>
+                            <button title="MoveStop" class="actionButton">Stop</button></td>
+                        <td>
+                            <button title="MoveRight" class="actionButton">Go Right</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button title="MoveRightTurn" class="actionButton">U-TurnRight</button></td>
+                        <td>
+                            <button title="MoveBack" class="actionButton">Go Back</button>
+                        </td>
+                        <td>
+                            <button title="MoveLeftTurn" class="actionButton">U-TurnLeft</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <button title="MoveForvard" class="actionButton">Moode: Auto</button><br />
+                        <button title="MoveForvard" class="actionButton">Moode: Manual</button>
+                        <td>
+                            <button title="MoveForvard" class="actionButton">Sleep: Doze</button><br />
+                            <button title="MoveForvard" class="actionButton">Sleep: Deep</button>
+                        </td>
+                        <td></td>
+                    </tr>
+                </table>
+            </fieldset>
+    </td>
+</tr>
 
-
-
-</body>
-</html>
+</table>
+</fieldset>
+</div>
