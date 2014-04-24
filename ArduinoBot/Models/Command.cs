@@ -22,9 +22,13 @@ namespace ArduinoBot.Models
         //}
 
         [Required]
+        [Display(Name = "Command")]
         public string Cmd { get; set; }
+        [Display(Name = "Type")]
         public string Type { get; set; }
+        [Display(Name = "Execution Time")]
         public int MsExTime { get; set; }
+        [Display(Name = "Delay after command")]
         public int MsDelayAfterExTime { get; set; }
         public DateTime Time
         {

@@ -16,6 +16,15 @@
     width: 200px;
 }
 
+.commandChildLeft td:first-child{
+    padding-left: 10px;
+    padding-right: 15px;
+}
+
+.commandChildLeft input[type=button]{
+    margin: 20px;
+}
+
 .commandChildRight {
     width: 350px;
 }
@@ -23,6 +32,10 @@
 .commandFieldset legend {
     border-style: none;
     width: auto;
+    margin-bottom: 0px;
 }
 
 
+.text-center {
+    text-align:center;
+}
