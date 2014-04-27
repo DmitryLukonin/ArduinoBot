@@ -45,10 +45,10 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>F:\Program Files My\Arduino\arduino-1.5.6\hardware\arduino\avr\cores\arduino;F:\Program Files My\Arduino\arduino-1.5.6\hardware\arduino\avr\variants\mega;F:\Program Files My\Arduino\arduino-1.5.6\libraries;F:\Program Files My\Arduino\arduino-1.5.6\hardware\arduino\avr\libraries;F:\Program Files My\Arduino\VS\Micro Platforms\default\debuggers;F:\Users\Demon\Documents\Arduino\libraries;f:\program files my\arduino\arduino-1.5.6\hardware\tools\avr\avr\include\;f:\program files my\arduino\arduino-1.5.6\hardware\tools\avr\avr\include\avr\;f:\program files my\arduino\arduino-1.5.6\hardware\tools\avr\avr\;f:\program files my\arduino\arduino-1.5.6\hardware\tools\avr\lib\gcc\avr\4.3.2\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\Program Files My\Arduino\arduino-1.0.5\hardware\arduino\cores\arduino;F:\Program Files My\Arduino\arduino-1.0.5\hardware\arduino\variants\mega;F:\Program Files My\Arduino\arduino-1.0.5\libraries\SoftwareServo;F:\Program Files My\Arduino\arduino-1.0.5\libraries\SoftwareServo\utility;F:\Program Files My\Arduino\arduino-1.0.5\libraries;F:\Program Files My\Arduino\arduino-1.0.5\hardware\arduino\libraries;F:\Program Files My\Arduino\VS\Micro Platforms\default\debuggers;F:\SkyDrive\Data\Arduino\MyDocs\Arduino\libraries;f:\program files my\arduino\arduino-1.0.5\hardware\tools\avr\avr\include\;f:\program files my\arduino\arduino-1.0.5\hardware\tools\avr\avr\include\avr\;f:\program files my\arduino\arduino-1.0.5\hardware\tools\avr\avr\;f:\program files my\arduino\arduino-1.0.5\hardware\tools\avr\lib\gcc\avr\4.3.2\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>F:\Users\Demon\Documents\Visual Studio 2013\Projects\ArduinoBot\ControllerSlave\Visual Micro\.ControllerSlave.vsarduino.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <IgnoreStandardIncludePath>true</IgnoreStandardIncludePath>
-      <PreprocessorDefinitions>__AVR_ATmega1280__;ARDUINO=156;ARDUINO_MAIN;__AVR__;__avr__;F_CPU=16000000L;__cplusplus;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>__AVR_ATmega2560__;ARDUINO=105;ARDUINO_MAIN;__AVR__;__avr__;F_CPU=16000000L;__cplusplus;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -69,12 +69,30 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Visual Micro\.ControllerSlave.vsarduino.h" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="ControllerSlave.ino">
       <FileType>CppCode</FileType>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Visual Micro\.ControllerSlave.vsarduino.h" />
+    <None Include="DistanceLogic.ino">
+      <FileType>CppCode</FileType>
+    </None>
+    <None Include="EngineLogic.ino">
+      <FileType>CppCode</FileType>
+    </None>
+    <None Include="LightLogic.ino">
+      <FileType>CppCode</FileType>
+    </None>
+    <None Include="SerialParcer.ino">
+      <FileType>CppCode</FileType>
+    </None>
+    <None Include="ServoLogic.ino">
+      <FileType>CppCode</FileType>
+    </None>
+    <None Include="SystemLogic.ino">
+      <FileType>CppCode</FileType>
+    </None>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

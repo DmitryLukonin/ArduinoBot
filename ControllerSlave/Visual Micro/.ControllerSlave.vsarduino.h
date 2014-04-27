@@ -5,13 +5,13 @@
 	        all non-arduino files created by visual micro and all visual studio project or solution files can be freely deleted and are not required to compile a sketch (do not delete your own code!).
 	        note: debugger breakpoints are stored in '.sln' or '.asln' files, knowledge of last uploaded breakpoints is stored in the upload.vmps.xml file. Both files are required to continue a previous debug session without needing to compile and upload again
 	
-	Hardware: Arduino Mega w/ ATmega1280, Platform=avr, Package=arduino
+	Hardware: Arduino Mega 2560 or Mega ADK, Platform=avr, Package=arduino
 */
 
 #ifndef _VSARDUINO_H_
 #define _VSARDUINO_H_
-#define __AVR_ATmega1280__
-#define ARDUINO 156
+#define __AVR_ATmega2560__
+#define ARDUINO 105
 #define ARDUINO_MAIN
 #define __AVR__
 #define __avr__
@@ -40,8 +40,39 @@ extern "C" void __cxa_pure_virtual() {;}
 
 //
 //
+void TestHeadMoving();
+void TestHeadPing();
+int CheckDistance();
+long PingDistance();
+int microsecondsToCentimeters(long microseconds);
+void MoveStop();
+void MoveForvard();
+void MoveBack();
+void MoveRight();
+void MoveLeft();
+void MoveRightTurn();
+void MoveLeftTurn();
+void MoveFullTurnLeft();
+void MoveFullTurnRight();
+void MRf();
+void MRb();
+void MLf();
+void MLb();
+int CheckLight();
+char Compare(char* This);
+void GetString();
+void HeadMoving(int value);
+void CheckTrigers();
+void ConfigureRnd();
+void ConfigureTriger(unsigned char TrigerId, unsigned long TrigerStopTime);
 
-#include "F:\Program Files My\Arduino\arduino-1.5.6\hardware\arduino\avr\cores\arduino\arduino.h"
-#include "F:\Program Files My\Arduino\arduino-1.5.6\hardware\arduino\avr\variants\mega\pins_arduino.h" 
+#include "F:\Program Files My\Arduino\arduino-1.0.5\hardware\arduino\cores\arduino\arduino.h"
+#include "F:\Program Files My\Arduino\arduino-1.0.5\hardware\arduino\variants\mega\pins_arduino.h" 
 #include "F:\Users\Demon\Documents\Visual Studio 2013\Projects\ArduinoBot\ControllerSlave\ControllerSlave.ino"
+#include "F:\Users\Demon\Documents\Visual Studio 2013\Projects\ArduinoBot\ControllerSlave\DistanceLogic.ino"
+#include "F:\Users\Demon\Documents\Visual Studio 2013\Projects\ArduinoBot\ControllerSlave\EngineLogic.ino"
+#include "F:\Users\Demon\Documents\Visual Studio 2013\Projects\ArduinoBot\ControllerSlave\LightLogic.ino"
+#include "F:\Users\Demon\Documents\Visual Studio 2013\Projects\ArduinoBot\ControllerSlave\SerialParcer.ino"
+#include "F:\Users\Demon\Documents\Visual Studio 2013\Projects\ArduinoBot\ControllerSlave\ServoLogic.ino"
+#include "F:\Users\Demon\Documents\Visual Studio 2013\Projects\ArduinoBot\ControllerSlave\SystemLogic.ino"
 #endif

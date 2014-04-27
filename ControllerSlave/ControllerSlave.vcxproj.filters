@@ -15,11 +15,17 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ControllerSlave.ino" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="Visual Micro\.ControllerSlave.vsarduino.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ControllerSlave.ino" />
+    <None Include="DistanceLogic.ino" />
+    <None Include="EngineLogic.ino" />
+    <None Include="LightLogic.ino" />
+    <None Include="SerialParcer.ino" />
+    <None Include="ServoLogic.ino" />
+    <None Include="SystemLogic.ino" />
   </ItemGroup>
 </Project>
