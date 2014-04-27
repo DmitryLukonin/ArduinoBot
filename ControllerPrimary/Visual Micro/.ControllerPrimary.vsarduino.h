@@ -78,6 +78,7 @@ void ConfigureRnd();
 void CleanSerial();
 boolean FindAndExecuteCommandFromWifi();
 String GetCommandFromString(String workZone);
+String FindCommandFromIr(unsigned long command);
 boolean ExecuteCommand(String command);
 char Compare(char* This, String command);
 void Test();

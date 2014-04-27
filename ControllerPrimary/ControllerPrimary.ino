@@ -135,6 +135,8 @@ void loop()
 
 	if (irrecv.decode(&results))
 	{
+		ExecuteCommand(FindCommandFromIr(results.value));
+
 		Serial.println(results.value, HEX);
 		irrecv.resume(); // Receive the next value
 	}

@@ -52,20 +52,11 @@ String GetCommandFromString(String workZone)
 }
 
 
-boolean FindAndExecuteCommandFromIr(String command)
+String FindCommandFromIr(unsigned long command)
 {
-
-	Serial.print("Looking for the command... ");
-	String response = ReadDataFromWifi();
-	if (response.length() == 0) return false;
-
-	String command = GetCommandFromString(response);
-	if (command.length() == 0) return false;
-	Serial.println(command);
-
-	boolean result = ExecuteCommand(command);
-	return result;
-
+	if (command == IrCommandGoPause)  {
+		Serial.println("yes");
+	}
 }
 
 
