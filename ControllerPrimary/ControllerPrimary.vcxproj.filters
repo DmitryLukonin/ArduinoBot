@@ -24,6 +24,7 @@
     <None Include="TestMethods.ino" />
     <None Include="WifiLogic.ino" />
     <None Include="ControllerPrimary.ino" />
+    <None Include="IrControllerMapping.ino" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Visual Micro\.ControllerPrimary.vsarduino.h">

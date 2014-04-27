@@ -78,7 +78,7 @@ void ConfigureRnd();
 void CleanSerial();
 boolean FindAndExecuteCommandFromWifi();
 String GetCommandFromString(String workZone);
-boolean ExecuteCommandFromWifi(String command);
+boolean ExecuteCommand(String command);
 char Compare(char* This, String command);
 void Test();
 void TestMusic();
@@ -100,6 +100,7 @@ void sendResponse(String response);
 #include "F:\Users\Demon\Documents\Visual Studio 2013\Projects\ArduinoBot\ControllerPrimary\BrainLogic.ino"
 #include "F:\Users\Demon\Documents\Visual Studio 2013\Projects\ArduinoBot\ControllerPrimary\CallSlaveServices.ino"
 #include "F:\Users\Demon\Documents\Visual Studio 2013\Projects\ArduinoBot\ControllerPrimary\EnvironmentLogic.ino"
+#include "F:\Users\Demon\Documents\Visual Studio 2013\Projects\ArduinoBot\ControllerPrimary\IrControllerMapping.ino"
 #include "F:\Users\Demon\Documents\Visual Studio 2013\Projects\ArduinoBot\ControllerPrimary\MusicMethods.ino"
 #include "F:\Users\Demon\Documents\Visual Studio 2013\Projects\ArduinoBot\ControllerPrimary\SleepLogic.ino"
 #include "F:\Users\Demon\Documents\Visual Studio 2013\Projects\ArduinoBot\ControllerPrimary\SystemLogic.ino"

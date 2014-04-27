@@ -1,5 +1,5 @@
 #include <IRremote.h>
-#include <IRremoteInt.h>
+//#include <IRremoteInt.h>
 
 #include <SPI.h>
 #include <WiFi.h>
@@ -14,7 +14,16 @@ int controlType=2; 			// 0 - fully automate, 1 - automate but check the command 
 #define DEBUG 2       	    // 0 - no response, 1 - only usb, 2 - usb and wifi detailed, 3 - usb and wifi only by request (manual control)
 #define KeepWifiActive 1 	// 0 - close connection, 1 - don't close	   
 boolean WifiEnabled = false;
+boolean IrEnabled = true;
 // ====================
+
+
+// ==================== IR
+int RECV_PIN = 8;
+IRrecv irrecv(RECV_PIN);
+decode_results results;
+// ==================== 
+
 
 // ==================== Wifi
 char ssid[] = "Stix"; //  your network SSID (name) 
@@ -77,6 +86,12 @@ void setup() {
    
    //Serial.print("Free RAM: ");       // This can help with debugging, running out of RAM is bad
 
+   if (IrEnabled)
+   {
+       PrintText("Enable IR");
+	   irrecv.enableIRIn(); // Start the receiver
+   }
+   
    if(WifiEnabled)
    {
 	ConnectToWifi();
@@ -115,9 +130,17 @@ void loop()
 	{
 //		BrainLoop();
 	}
+
+	PrintText("Nothing...");
+
+	if (irrecv.decode(&results))
+	{
+		Serial.println(results.value, HEX);
+		irrecv.resume(); // Receive the next value
+	}
+	
   
-  
-	delay(100);  
+	delay(1000);  
 }
 
 
