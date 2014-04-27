@@ -54,15 +54,36 @@ String GetCommandFromString(String workZone)
 
 String FindCommandFromIr(unsigned long command)
 {
-	if (command == IrCommandGoPause)  {
-		Serial.println("yes");
-	}
+	if (command == IrCommandGoPause)  return "BotOnPause";
+	if (command == IrCommandChM)  return "";
+	if (command == IrCommandChP)  return "";
+	if (command == IrCommandEq)  return "HeadLight";
+	if (command == IrCommandVolM)  return "VolumeD";
+	if (command == IrCommandVolP)  return "VolumeI";
+	if (command == IrCommand0)  return "HeadPing";
+	if (command == IrCommandPrev)  return "HeadPingL";
+	if (command == IrCommandNext)  return "HeadPingR";
+	if (command == IrCommand1)  return "";
+	if (command == IrCommand2)  return "MoveForvard";
+	if (command == IrCommand3)  return "";
+	if (command == IrCommand4)  return "MoveLeft";
+	if (command == IrCommand5)  return "MoveStop";
+	if (command == IrCommand6)  return "MoveRight";
+	if (command == IrCommand7)  return "";
+	if (command == IrCommand8)  return "MoveBack";
+	if (command == IrCommand9)  return "";
+	if (command == IrCommandPS)  return "";
+	if (command == IrCommandChSet)  return "BotModeSwitch";
+
+	return "";
+
 }
 
 
 
 boolean ExecuteCommand(String command)
 {
+	PrintText(command);
 
         if (Compare("HeadLight", command)==0) {
           HeadLight();
