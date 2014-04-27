@@ -1,3 +1,6 @@
+#include <IRremote.h>
+#include <IRremoteInt.h>
+
 #include <SPI.h>
 #include <WiFi.h>
 #include <SD.h>                      // need to include the SD library
@@ -7,10 +10,10 @@
 //#include "WaveUtil.h"
 
 // ==================== Control
-int controlType=2; 			// 0 - fully automate, 1 - automate but check the command  2 - wifi manual only 
+int controlType=2; 			// 0 - fully automate, 1 - automate but check the command (wifi and ir)  2 - wifi manual only 3 - ir only
 #define DEBUG 2       	    // 0 - no response, 1 - only usb, 2 - usb and wifi detailed, 3 - usb and wifi only by request (manual control)
 #define KeepWifiActive 1 	// 0 - close connection, 1 - don't close	   
-boolean WifiEnabled = true;
+boolean WifiEnabled = false;
 // ====================
 
 // ==================== Wifi
@@ -63,7 +66,6 @@ void setup() {
    Serial.begin(9600);
    Serial1.begin(9600);
    
-   
    tmrpcm.speakerPin = 11; //11 on Mega, 9 on Uno, Nano, etc
    if (!SD.begin(SD_ChipSelectPin)) {  // see if the card is present and can be initialized:
     Serial.println("SD fail");  
@@ -78,14 +80,15 @@ void setup() {
    if(WifiEnabled)
    {
 	ConnectToWifi();
+	delay(2000);
 	ConnectToSite();
    }
    
    Serial1.setTimeout(1500); 
    delay(1000);  
    
-  // PrintText("Start self-test");
-  // Test();
+   //PrintText("Start self-test");
+   //Test();
    PrintText("Self-test is completed. Going to live!");
 }
 
@@ -93,18 +96,18 @@ void loop()
 {
 	if(WifiEnabled) 
 	{
-		//if(CheckConnection())
-		//{
+		if(CheckConnection())
+		{
 			boolean command = FindAndExecuteCommandFromWifi();
 			if(!command && controlType==1)
 			{
 				BrainLoop();
 			}					
-		//}		
-		//else
-		//{
-		//	ConnectToWifi();
-		//}
+		}		
+		else
+		{
+			ConnectToWifi();
+		}
 	}
 
 	// looks bad. redo
@@ -114,7 +117,7 @@ void loop()
 	}
   
   
-	//delay(100);  
+	delay(100);  
 }
 
 

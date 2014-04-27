@@ -39,7 +39,8 @@ boolean FindAndExecuteCommandFromWifi()
 	if(command.length()==0) return false;
 	Serial.println(command);
 	
-	return ExecuteCommandFromWifi(command);
+	boolean result = ExecuteCommandFromWifi(command);
+	return result;
 	
 }
 

@@ -81,7 +81,7 @@ String ReadDataFromWifi()
   boolean startRecord = 0;
   String response="";
   
-  ConnectToSite();
+  //ConnectToSite();
   
   if (client.connected())
   {
