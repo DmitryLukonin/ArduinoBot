@@ -15,7 +15,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <None Include="BrainLogic.ino" />
+    <None Include="CallSlaveServices.ino" />
+    <None Include="EnvironmentLogic.ino" />
+    <None Include="MusicMethods.ino" />
+    <None Include="SleepLogic.ino" />
+    <None Include="SystemLogic.ino" />
+    <None Include="TestMethods.ino" />
+    <None Include="WifiLogic.ino" />
     <None Include="ControllerPrimary.ino" />
+    <None Include="IrControllerMapping.ino" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Visual Micro\.ControllerPrimary.vsarduino.h">

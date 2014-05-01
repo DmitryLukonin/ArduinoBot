@@ -5,13 +5,13 @@
 	        all non-arduino files created by visual micro and all visual studio project or solution files can be freely deleted and are not required to compile a sketch (do not delete your own code!).
 	        note: debugger breakpoints are stored in '.sln' or '.asln' files, knowledge of last uploaded breakpoints is stored in the upload.vmps.xml file. Both files are required to continue a previous debug session without needing to compile and upload again
 	
-	Hardware: Arduino Mega w/ ATmega1280, Platform=avr, Package=arduino
+	Hardware: Arduino Mega 2560 or Mega ADK, Platform=avr, Package=arduino
 */
 
 #ifndef _VSARDUINO_H_
 #define _VSARDUINO_H_
-#define __AVR_ATmega1280__
-#define ARDUINO 156
+#define __AVR_ATmega2560__
+#define ARDUINO 105
 #define ARDUINO_MAIN
 #define __AVR__
 #define __avr__
@@ -40,8 +40,71 @@ extern "C" void __cxa_pure_virtual() {;}
 
 //
 //
+void PrintText(String text);
+void BrainLoop();
+void Brain();
+void BrainMov();
+void BrainMovBre(boolean danger);
+void BrainMoveCarefullLeLeft();
+void BrainMoveCarefullLeRight();
+void BrainMovBreAnalize(boolean enclosed);
+void BrainMovBreTurn();
+int HeadLight();
+int HeadPing();
+int HeadPingF();
+int HeadPingR();
+int HeadPingL();
+void MoveForvard();
+void MoveBack();
+void MoveRight();
+void MoveLeft();
+void MoveRightTurn();
+void MoveLeftTurn();
+void MoveFullTurnLeft();
+void MoveFullTurnRight();
+void MoveStop();
+void HeadMoveF();
+void HeadMoveR();
+void HeadMoveL();
+int CheckLight();
+int CheckDistance();
+void playcomplete(char *name);
+void playfile(char *name);
+void playFileNoPriority(char *name);
+void SleepStart();
+void SleepEnd();
+void Rest(int time);
+void ConfigureRnd();
+void CleanSerial();
+boolean FindAndExecuteCommandFromWifi();
+String GetCommandFromString(String workZone);
+String FindCommandFromIr(unsigned long command);
+boolean ExecuteCommand(String command);
+char Compare(char* This, String command);
+void Test();
+void TestMusic();
+void TestLight();
+void TestPing();
+void TestPingWithAction();
+void TestEngine();
+void TestHeadMoving();
+void printWifiStatus();
+void ConnectToSite();
+void ConnectToWifi();
+String ReadDataFromWifi();
+boolean CheckConnection();
+void sendResponse(String response);
 
-#include "F:\Program Files My\Arduino\arduino-1.5.6\hardware\arduino\avr\cores\arduino\arduino.h"
-#include "F:\Program Files My\Arduino\arduino-1.5.6\hardware\arduino\avr\variants\mega\pins_arduino.h" 
+#include "F:\Program Files My\Arduino\arduino-1.0.5\hardware\arduino\cores\arduino\arduino.h"
+#include "F:\Program Files My\Arduino\arduino-1.0.5\hardware\arduino\variants\mega\pins_arduino.h" 
 #include "F:\Users\Demon\Documents\Visual Studio 2013\Projects\ArduinoBot\ControllerPrimary\ControllerPrimary.ino"
+#include "F:\Users\Demon\Documents\Visual Studio 2013\Projects\ArduinoBot\ControllerPrimary\BrainLogic.ino"
+#include "F:\Users\Demon\Documents\Visual Studio 2013\Projects\ArduinoBot\ControllerPrimary\CallSlaveServices.ino"
+#include "F:\Users\Demon\Documents\Visual Studio 2013\Projects\ArduinoBot\ControllerPrimary\EnvironmentLogic.ino"
+#include "F:\Users\Demon\Documents\Visual Studio 2013\Projects\ArduinoBot\ControllerPrimary\IrControllerMapping.ino"
+#include "F:\Users\Demon\Documents\Visual Studio 2013\Projects\ArduinoBot\ControllerPrimary\MusicMethods.ino"
+#include "F:\Users\Demon\Documents\Visual Studio 2013\Projects\ArduinoBot\ControllerPrimary\SleepLogic.ino"
+#include "F:\Users\Demon\Documents\Visual Studio 2013\Projects\ArduinoBot\ControllerPrimary\SystemLogic.ino"
+#include "F:\Users\Demon\Documents\Visual Studio 2013\Projects\ArduinoBot\ControllerPrimary\TestMethods.ino"
+#include "F:\Users\Demon\Documents\Visual Studio 2013\Projects\ArduinoBot\ControllerPrimary\WifiLogic.ino"
 #endif
