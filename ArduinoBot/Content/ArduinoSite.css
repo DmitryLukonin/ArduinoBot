@@ -4,7 +4,11 @@
     border-color: inherit;
     padding: 1px;
     margin: 1px;
-    width: 350px;
+    
+}
+
+.commandParent {
+    width: 678px;
 }
 
 .commandChild {
@@ -13,7 +17,7 @@
 }
 
 .commandChildLeft {
-    width: 200px;
+    width: 320px;
 }
 
 .commandChildLeft td:first-child{
@@ -23,6 +27,10 @@
 
 .commandChildLeft input[type=button]{
     margin: 20px;
+}
+
+.commandChildLeft div{
+    padding-right: 10px;
 }
 
 .commandChildRight {

@@ -209,9 +209,8 @@ Responses:
     </div>
 
 <div class="commandFieldset">
-    <fieldset>
+    <fieldset class="commandParent">
         <legend>Command</legend>
-
         <table>
             <tr>
                 <td>
@@ -223,7 +222,7 @@ Responses:
                             <tr>
                                 <td>
                                     <div class="editor-label">
-                                        @Html.LabelFor(model => model.Cmd)
+                                        @Html.LabelFor(model => model.Cmd )
                                     </div>
                                 </td>
                                 <td>
@@ -281,7 +280,7 @@ Responses:
                 <td>
                     <fieldset class="commandChild commandChildRight">
                         <legend>
-                            <h5>Presaved commands</h5>
+                            <h4>Presaved commands</h4>
                         </legend>
 <div class="text-center">
                         <table style="margin: 0 auto;">
