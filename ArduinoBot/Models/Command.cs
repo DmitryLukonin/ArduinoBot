@@ -36,7 +36,7 @@ namespace ArduinoBot.Models
         }
         public string TimeString
         {
-            get { return _time.ToString("MM/dd/yyyy HH:mm:ss.fff tt"); }
+            get { return _time.ToString("HH:mm:ss.fff"); }
         }
         public bool Received { get; set; }
 

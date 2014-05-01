@@ -5,210 +5,205 @@
 }
 
 
-    <script type="text/javascript">
-        $(document).ready(function () {
+<script type="text/javascript">
+    $(document).ready(function () {
 
-            var lastResponseId = 0;
-            var summResponcseRecords = 0;
-            var timerIdResponcse = 0;
-            var lockResponse = false;
+        var lastResponseId = 0;
+        var summResponcseRecords = 0;
+        var timerIdResponcse = 0;
+        var lockResponse = false;
 
-            var lastCommandId = 0;
-            var summCommanRecords = 0;
-            var timerIdCommand = 0;
-            var lockCommand = false;
+        var lastCommandId = 0;
+        var summCommanRecords = 0;
+        var timerIdCommand = 0;
+        var lockCommand = false;
 
 
-            // ========================== Commands
-            // configs
-            var limitCommandTable = 100;
-            var updateTimerCommand = 1000;
-            //====
+        // ========================== Commands
+        // configs
+        var limitCommandTable = 100;
+        var updateTimerCommand = 1000;
+        //====
 
-            function reloadCommands() {
-                if (lockCommand == false) {
-                    lockCommand = true;
-                    var query = $.getJSON("/api/Command/Core/GetAllCommands/" + lastCommandId, function (result) {
-                        $.each(result, function (i, command) {
-                            $('#tbCommands tr:first').after('<tr><td>' + command.Id + '</td><td>' + command.TimeString + '</td><td>' + command.Cmd + '</td><td>' + command.Received + '</td><td>' + command.MsExTime + '</td></tr>');
-                            if (lastCommandId < command.Id) lastCommandId = command.Id; // I will optimize it, i'm sure...
-                            controllCommandList();
-                        });
-                    })
-                    .complete(function () {
-                        lockCommand = false;
+        function reloadCommands() {
+            if (lockCommand == false) {
+                lockCommand = true;
+                var query = $.getJSON("/api/Command/Core/GetAllCommands/" + lastCommandId, function (result) {
+                    $.each(result, function (i, command) {
+                        $('#tbCommands tr:first').after('<tr><td>' + command.Id + '</td><td>' + command.TimeString + '</td><td>' + command.Cmd + '</td><td>' + command.Received + '</td><td>' + command.MsExTime + '</td></tr>');
+                        if (lastCommandId < command.Id) lastCommandId = command.Id; // I will optimize it, i'm sure...
+                        controllCommandList();
                     });
-                }
+                })
+                .complete(function () {
+                    lockCommand = false;
+                });
             }
-            function controllCommandList() {
-                summCommanRecords++;
-                if (summCommanRecords > limitCommandTable) {
-                    $('#tbCommands tr').last().remove();
-                }
+        }
+        function controllCommandList() {
+            summCommanRecords++;
+            if (summCommanRecords > limitCommandTable) {
+                $('#tbCommands tr').last().remove();
             }
-            function startCommandTimer() {
-                timerIdCommand = setInterval(function () {
-                    reloadCommands();
-                }, updateTimerCommand);
-            }
-            function stopCommandTimer() {
-                clearInterval(timerIdCommand);
-            }
-            // ========================== END Commands
-
-
-            // ========================== Response
-
-            // configs
-            var limitResponseTable = 100;
-            var updateTimerResponse = 2000;
-            //====
-
-            function reloadResponces() {
-                if (lockResponse == false) {
-                    lockResponse = true;
-                    var query = $.getJSON("/api/Response/Core/GetAllResponses/" + lastResponseId, function (result) {
-                        $.each(result, function (i, response) {
-                            $('#tbResponses tr:first').after('<tr><td>' + response.Id + '</td><td>' + response.TimeString + '</td><td>' + response.Text + '</td></tr>');
-                            if (lastResponseId < response.Id) lastResponseId = response.Id; // I will optimize it, i'm sure...
-                            controllResponseList();
-                        });
-                    })
-                    .complete(function () {
-                        lockResponse = false;
-                    });
-                }
-            }
-            function controllResponseList() {
-                summResponcseRecords++;
-                if (summResponcseRecords > limitResponseTable) {
-                    $('#tbResponses tr').last().remove();
-                }
-            }
-            function startResponseTimer() {
-                timerIdResponcse = setInterval(function () {
-                    reloadResponces();
-                }, updateTimerResponse);
-            }
-            function stopResponseTimer() {
-                clearInterval(timerIdResponcse);
-            }
-            // ========================== END Response
-
-            $("#btnRefreshResponses").click(function () {
-                reloadResponces();
+        }
+        function startCommandTimer() {
+            timerIdCommand = setInterval(function () {
                 reloadCommands();
-            });
+            }, updateTimerCommand);
+        }
+        function stopCommandTimer() {
+            clearInterval(timerIdCommand);
+        }
+        // ========================== END Commands
 
-            $("#btnSubmitCommand").click(function () {
-                $.ajax({
-                    type: "POST",
-                    beforeSend: function (request) {
-                        request.setRequestHeader("CoreKey", '98sdfhfdJ98jdsfJks2fsSfsdf32');
-                    },
-                    url: "/api/Command/Core/Post/",
-                    data: {
-                        Cmd: $("#Cmd").val(),
-                        Type: $("#Type").val(),
-                        MsExTime: $("#MsExTime").val(),
-                        MsDelayAfterExTime: $("#MsDelayAfterExTime").val()
-                    },
-                    dataType: 'json',
-                    success: function (msg) {
-                    }
+
+        // ========================== Response
+
+        // configs
+        var limitResponseTable = 100;
+        var updateTimerResponse = 2000;
+        //====
+
+        function reloadResponces() {
+            if (lockResponse == false) {
+                lockResponse = true;
+                var query = $.getJSON("/api/Response/Core/GetAllResponses/" + lastResponseId, function (result) {
+                    $.each(result, function (i, response) {
+                        $('#tbResponses tr:first').after('<tr><td>' + response.Id + '</td><td>' + response.TimeString + '</td><td>' + response.Text + '</td></tr>');
+                        if (lastResponseId < response.Id) lastResponseId = response.Id; // I will optimize it, i'm sure...
+                        controllResponseList();
+                    });
+                })
+                .complete(function () {
+                    lockResponse = false;
                 });
-            });
+            }
+        }
+        function controllResponseList() {
+            summResponcseRecords++;
+            if (summResponcseRecords > limitResponseTable) {
+                $('#tbResponses tr').last().remove();
+            }
+        }
+        function startResponseTimer() {
+            timerIdResponcse = setInterval(function () {
+                reloadResponces();
+            }, updateTimerResponse);
+        }
+        function stopResponseTimer() {
+            clearInterval(timerIdResponcse);
+        }
+        // ========================== END Response
 
+        $("#btnRefreshResponses").click(function () {
+            reloadResponces();
+            reloadCommands();
+        });
 
-            $(".actionButton").click(function () {
-                var vall = $(this).attr("title");
-                if (vall != null) {
-                    $("#Cmd").val(vall);
-                    $("#btnSubmitCommand").click();
+        $("#btnSubmitCommand").click(function () {
+            $.ajax({
+                type: "POST",
+                beforeSend: function (request) {
+                    request.setRequestHeader("CoreKey", '98sdfhfdJ98jdsfJks2fsSfsdf32');
+                },
+                url: "/api/Command/Core/Post/",
+                data: {
+                    Cmd: $("#Cmd").val(),
+                    Type: $("#Type").val(),
+                    MsExTime: $("#MsExTime").val(),
+                    MsDelayAfterExTime: $("#MsDelayAfterExTime").val()
+                },
+                dataType: 'json',
+                success: function (msg) {
                 }
             });
+        });
 
-            function centeredPopupWindow(url, winName, w, h, scroll) {
-                var LeftPosition = (screen.width) ? (screen.width - w) / 2 : 0;
-                var TopPosition = (screen.height) ? (screen.height - h) / 2 : 0;
-                //var resizable = "yes" ;
-                var settings = 'height=' + h + ',width=' + w + ',top=' + TopPosition + ',left=' + LeftPosition + ',scrollbars=' + scroll + ',resizable';
-                gPopupWindow = window.open(url, winName, settings);
-                // gPopupWindow.style.zIndex="1";
-                gPopupWindow.focus();
 
+        $(".actionButton").click(function () {
+            var vall = $(this).attr("title");
+            if (vall != null) {
+                $("#Cmd").val(vall);
+                $("#btnSubmitCommand").click();
             }
+        });
 
-            $('#myButton').click(function () {
-                //window.open("https://my.vuezone.com/Main.aspx");
+        function centeredPopupWindow(url, winName, w, h, scroll) {
+            var LeftPosition = (screen.width) ? (screen.width - w) / 2 : 0;
+            var TopPosition = (screen.height) ? (screen.height - h) / 2 : 0;
+            //var resizable = "yes" ;
+            var settings = 'height=' + h + ',width=' + w + ',top=' + TopPosition + ',left=' + LeftPosition + ',scrollbars=' + scroll + ',resizable';
+            gPopupWindow = window.open(url, winName, settings);
+            // gPopupWindow.style.zIndex="1";
+            gPopupWindow.focus();
 
+        }
 
-                var url = "http://www.google.com";
+        $('#myButton').click(function () {
+            //window.open("https://my.vuezone.com/Main.aspx");
+            var url = "http://www.google.com";
+            centeredPopupWindow(url, 'sd', '1024', '700', 'yes');
+        });
 
-
-                centeredPopupWindow(url, 'sd', '1024', '700', 'yes');
-
-                //SubpopUpWin = window.open(url, '_blank', 'toolbar=no,status=no,menubar=no,scrollbars=yes,resizable=yes,copyhistory=yes');
-
-                //$('#myFrame').attr('src', "https://my.vuezone.com/Main.aspx");
-                //showDialog("test");
-                //newwindow = window.open("https://my.vuezone.com/Main.aspx", 'https://my.vuezone.com/Main.aspx', 'height=500,width=550');
-                //if (window.focus) {
-                //    newwindow.focus();
-                //}
-                //return false;
-
+        function showDialog(uniqueName) {
+            $("#dialog-page").load('http://jaliyaudagedara.blogspot.com').dialog({
+                autoOpen: false,
+                resizable: true,
+                height: 400,
+                width: 600,
+                modal: true
             });
 
-            function showDialog(uniqueName) {
-                $("#dialog-page").load('http://jaliyaudagedara.blogspot.com').dialog({
-                    autoOpen: false,
-                    resizable: true,
-                    height: 400,
-                    width: 600,
-                    modal: true
-                });
+            $('#dialog-page').dialog('open');
+            return false;
+        }
 
-                $('#dialog-page').dialog('open');
-                return false;
-            }
-
-            startCommandTimer();
-            startResponseTimer();
+        startCommandTimer();
+        startResponseTimer();
 
 
-        });
-    </script>
+    });
+</script>
 <div id='dialog-page' title="Modal">
 </div>
 
+<div class="controlFieldset">
+    <fieldset>
+        <legend>Logs</legend>
+        <fieldset class="">
+            <legend><h4>Commands:</h4></legend>
+            <div class="logDiv">
+                <table id="tbCommands">
+                    <tr>
+                        <th class="command-Id">Command Id</th>
+                        <th class="command-Time">Time</th>
+                        <th class="command-Command">Command</th>
+                        <th class="command-Received">Arrived</th>
+                        <th class="command-Time">P Time</th>
+                    </tr>
+                </table>
+            </div>
+        </fieldset>
+        <br />
 
-Commands:
-    <div style="height: 250px; overflow: auto;">
-        <table id="tbCommands" border="1">
-            <tr>
-                <th width="120px;">Command Id</th>
-                <th width="200px;">Time</th>
-                <th width="250px;">Command</th>
-                <th width="80px;">Received? (N/A)</th>
-                <th width="100px;">Execution Time</th>
-            </tr>
-        </table>
-    </div>
-<br />
-Responses:
-    <div style="height: 250px; overflow: auto;">
-        <table id="tbResponses" border="1">
-            <tr>
-                <th width="120px;">Response Id</th>
-                <th width="200px;">Time</th>
-                <th width="350px;">Response</th>
-                <th>Command</th>
-            </tr>
-        </table>
-    </div>
+        <fieldset class="">
+            <legend><h4>Responses:</h4></legend>
+            <div class="logDiv">
+                <table id="tbResponses">
+                    <tr>
+                        <th class="response-Id">Response Id</th>
+                        <th class="response-Time">Time</th>
+                        <th class="response-Text">Response</th>
+                        <th class="response-Comand">Command</th>
+                    </tr>
+                </table>
+            </div>
+        </fieldset>
+    </fieldset>
 
-<div class="commandFieldset">
+</div>
+
+<div class="controlFieldset">
     <fieldset class="commandParent">
         <legend>Command</legend>
         <table>
@@ -222,7 +217,7 @@ Responses:
                             <tr>
                                 <td>
                                     <div class="editor-label">
-                                        @Html.LabelFor(model => model.Cmd )
+                                        @Html.LabelFor(model => model.Cmd)
                                     </div>
                                 </td>
                                 <td>

@@ -1,4 +1,36 @@
-﻿.commandFieldset fieldset{
+﻿.logDiv {
+    height: 250px; 
+    overflow: auto;
+}
+.logDiv table{
+    border-style: double;
+    border-width: 1px;
+    border-color: inherit;
+}
+
+.logDiv th{
+    padding: 3px;
+}
+
+.command-Command, .response-Comand {
+    width: 150px;
+}
+
+.command-Received {
+    width: 90px;
+}
+
+.response-Id, .command-Id {
+    width: 100px;
+}
+.response-Time, .command-Time {
+    width: 100px;
+}
+.response-Text {
+    width: 350px;
+}
+
+.controlFieldset fieldset{
     border-style: solid;
     border-width: thin;
     border-color: inherit;
@@ -37,7 +69,7 @@
     width: 350px;
 }
 
-.commandFieldset legend {
+.controlFieldset legend {
     border-style: none;
     width: auto;
     margin-bottom: 0px;
