@@ -9,20 +9,17 @@ void HeadMoving(int value)
     {
       for (int i=HeadCurrent; i <= value; i++){
         Head.write(i); 
-        SoftwareServo::refresh();
-        delay(10);
+        delay(5);
       } 
     }
     else
     {
       for (int i=HeadCurrent; i >= value; i--){
         Head.write(i); 
-        SoftwareServo::refresh(); 
-        delay(10);
+        delay(5);
       } 
     }      
   }   
-  SoftwareServo::refresh();
   HeadCurrent=value; 
   
   if(value!=90) 

@@ -1,4 +1,5 @@
-#include <SoftwareServo.h>
+//#include <SoftwareServo.h>
+#include <Servo.h> 
 
 const int ledPin = 13; // the pin that the LED is attached to
 
@@ -12,7 +13,7 @@ const int ledPin = 13; // the pin that the LED is attached to
 
 
 // ==================== Head
-SoftwareServo Head;
+Servo Head;
 unsigned char HeadCurrent=90; 
 unsigned char HeadTrigersCount=3;
 #define HeadForward 90   // Position for head forward
