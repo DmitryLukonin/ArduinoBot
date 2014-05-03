@@ -10,12 +10,7 @@ int CheckDistance()
   {
     long tempDist=PingDistance();                   
 
-    if (DEBUG) {
-      //Serial.print(tempDist);
-      //Serial.print(", ");
-    }
-
-    if (tempDist<3000)
+    if (tempDist<3000 && tempDist>0)
     {
       distance=distance+tempDist;
       x++;
@@ -26,7 +21,7 @@ int CheckDistance()
       toobig=true;
     }
 
-    delay(10);
+    delay(1);
   }
 
   int averegeDistance = distance/x;    
@@ -45,16 +40,12 @@ long PingDistance()
   digitalWrite(TRIGPIN, LOW);                   // Set the trigger pin to low for 2uS
   delayMicroseconds(2);
   digitalWrite(TRIGPIN, HIGH);                  // Send a 10uS high to trigger ranging
-  delayMicroseconds(10);
+  delayMicroseconds(5);
   digitalWrite(TRIGPIN, LOW);                   // Send pin low again
   return microsecondsToCentimeters(pulseIn(ECHOPIN, HIGH));
 }
 
 int microsecondsToCentimeters(long microseconds)
 {
-  // The speed of sound is 340 m/s or 29 microseconds per centimeter.
-  // The ping travels out and back, so to find the distance of the
-  // object we take half of the distance travelled.
-
   return microseconds / 29 / 2;
 } 

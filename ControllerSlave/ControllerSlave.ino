@@ -17,8 +17,8 @@ Servo Head;
 unsigned char HeadCurrent=90; 
 unsigned char HeadTrigersCount=3;
 #define HeadForward 90   // Position for head forward
-#define HeadRight 130   // Position for head right
-#define HeadLeft 50   // Position for head left
+#define HeadRight 120   // Position for head right
+#define HeadLeft 60   // Position for head left
 // ====================
 
 
