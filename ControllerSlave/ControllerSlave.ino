@@ -81,110 +81,212 @@ void loop() {
   digitalWrite(ledPin, LOW);
   CheckTrigers();
 
-   // see if there's incoming serial data:
-   if (Serial1.available()) 
-   {          
-     digitalWrite(ledPin, HIGH);
-     int firstChar = Serial1.read();
-     if (firstChar == 59) 
-     { //send a ; before your string as a start byte     
-        delay(100);
-        Serial.write("Command started");        
+  static char buffer[80];
+  if (readline(Serial.read(), buffer, 80) > 0) {
+
+	  if (Compare("Ping", buffer) == 0) {
+		  Serial.println("Ping");
+		  Serial1.println(1);
+	  }
+	  else if (Compare("MoveForvard", buffer) == 0) {
+		  Serial.println("MoveForvard");
+		  MoveForvard();
+	  }
+	  else if (Compare("MoveBack", buffer) == 0) {
+		  Serial.println("MoveBack");
+		  MoveBack();
+	  }
+	  else if (Compare("MoveRight", buffer) == 0) {
+		  Serial.println("MoveRight");
+		  MoveRight();
+	  }
+	  else if (Compare("MoveLeft", buffer) == 0) {
+		  Serial.println("MoveLeft");
+		  MoveLeft();
+	  }
+	  else if (Compare("MoveRightTurn", buffer) == 0) {
+		  Serial.println("MoveRightTurn");
+		  MoveRightTurn();
+	  }
+	  else if (Compare("MoveLeftTurn", buffer) == 0) {
+		  Serial.println("MoveLeftTurn");
+		  MoveLeftTurn();
+	  }
+	  else if (Compare("MoveFullTurnLeft", buffer) == 0) {
+		  Serial.println("MoveFullTurnLeft");
+		  MoveFullTurnLeft();
+	  }
+	  else if (Compare("MoveFullTurnRight", buffer) == 0) {
+		  Serial.println("MoveFullTurnRight");
+		  MoveFullTurnRight();
+	  }
+	  else if (Compare("MoveStop", buffer) == 0, buffer) {
+		  Serial.println("MoveStop");
+		  MoveStop();
+	  }
+	  else if (Compare("HeadMoveF", buffer) == 0, buffer) {
+		  Serial.println("HeadMoveF");
+		  HeadMoving(HeadForward);
+	  }
+	  else if (Compare("HeadMoveR", buffer) == 0, buffer) {
+		  Serial.println("HeadMoveR");
+		  HeadMoving(HeadRight);
+	  }
+	  else if (Compare("HeadMoveL", buffer) == 0, buffer) {
+		  Serial.println("HeadMoveR");
+		  HeadMoving(HeadLeft);
+	  }
+	  else if (Compare("HeadPing", buffer) == 0, buffer) {
+		  Serial.println("HeadPing");
+		  int distance = CheckDistance();
+		  Serial1.println(distance);
+		  Serial.println(distance);
+	  }
+	  else if (Compare("HeadPingF", buffer) == 0, buffer) {
+		  Serial.println("HeadPingF");
+		  HeadMoving(HeadForward);
+		  int distance = CheckDistance();
+		  Serial1.println(distance);
+		  Serial.println(distance);
+	  }
+	  else if (Compare("HeadPingR", buffer) == 0, buffer) {
+		  Serial.println("HeadPingR");
+		  HeadMoving(HeadRight);
+		  int distance = CheckDistance();
+		  Serial1.println(distance);
+		  Serial.println(distance);
+	  }
+	  else if (Compare("HeadPingL", buffer) == 0, buffer) {
+		  Serial.println("HeadPingL");
+		  HeadMoving(HeadLeft);
+		  int distance = CheckDistance();
+		  Serial1.println(distance);
+		  Serial.println(distance);
+	  }
+	  else if (Compare("HeadLight", buffer) == 0, buffer) {
+		  Serial.println("HeadLight");
+		  CheckLight();
+		  int light = CheckLight();
+		  Serial1.println(light);
+		  Serial.println(light);
+	  }
+  }
+
+
+
+
+   //// see if there's incoming serial data:
+   //if (Serial1.available()) 
+   //{          
+
+   //  digitalWrite(ledPin, HIGH);
+   //  int firstChar = Serial1.read();
+   //  if (firstChar == 59) 
+   //  { //send a ; before your string as a start byte     
+   //     delay(100);
+   //     Serial.write("Command started");        
+   //     
+   //     GetString();
+   //     
+   //     if (Compare("Ping")==0) {
+   //       Serial.println("Ping");
+   //       Serial1.println(1);
+   //     }
+   //     else if (Compare("MoveForvard")==0) {
+   //       Serial.println("MoveForvard");
+   //       MoveForvard();
+   //     }
+   //     else if (Compare("MoveBack")==0) {
+   //       Serial.println("MoveBack");
+   //       MoveBack();
+   //     }
+   //     else if (Compare("MoveRight")==0) {
+   //       Serial.println("MoveRight");
+   //       MoveRight();
+   //     }
+   //     else if (Compare("MoveLeft")==0) {
+   //       Serial.println("MoveLeft");
+   //       MoveLeft();
+   //     }      
+   //     else if (Compare("MoveRightTurn")==0) {
+   //       Serial.println("MoveRightTurn");
+   //       MoveRightTurn();
+   //     }  
+   //     else if (Compare("MoveLeftTurn")==0) {
+   //       Serial.println("MoveLeftTurn");
+   //       MoveLeftTurn();
+   //     }  
+   //     else if (Compare("MoveFullTurnLeft")==0) {
+   //       Serial.println("MoveFullTurnLeft");
+   //       MoveFullTurnLeft();
+   //     }  
+   //     else if (Compare("MoveFullTurnRight")==0) {
+   //       Serial.println("MoveFullTurnRight");
+   //       MoveFullTurnRight();
+   //     } 
+   //     else if (Compare("MoveStop")==0) {
+   //       Serial.println("MoveStop");
+   //       MoveStop();
+   //     }
+   //     else if (Compare("HeadMoveF")==0) {
+   //       Serial.println("HeadMoveF");
+   //       HeadMoving(HeadForward); 
+   //     }
+   //     else if (Compare("HeadMoveR")==0) {
+   //       Serial.println("HeadMoveR");
+   //       HeadMoving(HeadRight); 
+   //     }
+   //     else if (Compare("HeadMoveL")==0) {
+   //       Serial.println("HeadMoveR");
+   //       HeadMoving(HeadLeft); 
+   //     }
+   //     else if (Compare("HeadPing")==0) {
+   //       Serial.println("HeadPing");
+   //       int distance = CheckDistance();          
+   //       Serial1.println(distance);
+   //       Serial.println(distance);
+   //     }
+   //     else if (Compare("HeadPingF")==0) {
+   //       Serial.println("HeadPingF");
+   //       HeadMoving(HeadForward); 
+   //       int distance = CheckDistance();          
+   //       Serial1.println(distance);
+   //       Serial.println(distance);
+   //     } 
+   //     else if (Compare("HeadPingR")==0) {
+   //       Serial.println("HeadPingR");
+   //       HeadMoving(HeadRight); 
+   //       int distance = CheckDistance();          
+   //       Serial1.println(distance);
+   //       Serial.println(distance);
+   //     }         
+   //     else if (Compare("HeadPingL")==0) {
+   //       Serial.println("HeadPingL");
+   //       HeadMoving(HeadLeft); 
+   //       int distance = CheckDistance();          
+   //       Serial1.println(distance);
+   //       Serial.println(distance);
+   //     } 
+   //     else if (Compare("HeadLight")==0) {
+   //       Serial.println("HeadLight");
+   //       CheckLight();
+   //       int light = CheckLight();
+   //       Serial1.println(light);
+   //       Serial.println(light);
+   //     }
+   //     
+   //     
+   //  }
         
-        GetString();
-        
-        if (Compare("Ping")==0) {
-          Serial.println("Ping");
-          Serial1.println(1);
-        }
-        else if (Compare("MoveForvard")==0) {
-          Serial.println("MoveForvard");
-          MoveForvard();
-        }
-        else if (Compare("MoveBack")==0) {
-          Serial.println("MoveBack");
-          MoveBack();
-        }
-        else if (Compare("MoveRight")==0) {
-          Serial.println("MoveRight");
-          MoveRight();
-        }
-        else if (Compare("MoveLeft")==0) {
-          Serial.println("MoveLeft");
-          MoveLeft();
-        }      
-        else if (Compare("MoveRightTurn")==0) {
-          Serial.println("MoveRightTurn");
-          MoveRightTurn();
-        }  
-        else if (Compare("MoveLeftTurn")==0) {
-          Serial.println("MoveLeftTurn");
-          MoveLeftTurn();
-        }  
-        else if (Compare("MoveFullTurnLeft")==0) {
-          Serial.println("MoveFullTurnLeft");
-          MoveFullTurnLeft();
-        }  
-        else if (Compare("MoveFullTurnRight")==0) {
-          Serial.println("MoveFullTurnRight");
-          MoveFullTurnRight();
-        } 
-        else if (Compare("MoveStop")==0) {
-          Serial.println("MoveStop");
-          MoveStop();
-        }
-        else if (Compare("HeadMoveF")==0) {
-          Serial.println("HeadMoveF");
-          HeadMoving(HeadForward); 
-        }
-        else if (Compare("HeadMoveR")==0) {
-          Serial.println("HeadMoveR");
-          HeadMoving(HeadRight); 
-        }
-        else if (Compare("HeadMoveL")==0) {
-          Serial.println("HeadMoveR");
-          HeadMoving(HeadLeft); 
-        }
-        else if (Compare("HeadPing")==0) {
-          Serial.println("HeadPing");
-          int distance = CheckDistance();          
-          Serial1.println(distance);
-          Serial.println(distance);
-        }
-        else if (Compare("HeadPingF")==0) {
-          Serial.println("HeadPingF");
-          HeadMoving(HeadForward); 
-          int distance = CheckDistance();          
-          Serial1.println(distance);
-          Serial.println(distance);
-        } 
-        else if (Compare("HeadPingR")==0) {
-          Serial.println("HeadPingR");
-          HeadMoving(HeadRight); 
-          int distance = CheckDistance();          
-          Serial1.println(distance);
-          Serial.println(distance);
-        }         
-        else if (Compare("HeadPingL")==0) {
-          Serial.println("HeadPingL");
-          HeadMoving(HeadLeft); 
-          int distance = CheckDistance();          
-          Serial1.println(distance);
-          Serial.println(distance);
-        } 
-        else if (Compare("HeadLight")==0) {
-          Serial.println("HeadLight");
-          CheckLight();
-          int light = CheckLight();
-          Serial1.println(light);
-          Serial.println(light);
-        }
-        
-        
-     }
-        
-   }
+  // }
+
+
+   delay(1);
 }   
+
+
+
+
         
  void TestHeadMoving()
 {
