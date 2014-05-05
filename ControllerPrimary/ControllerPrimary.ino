@@ -11,10 +11,11 @@
 
 // ==================== Control
 int controlType=2; 			// 0 - fully automate, 1 - automate but check the command (wifi and ir)  2 - wifi manual only 3 - ir only
-#define DEBUG 2       	    // 0 - no response, 1 - only usb, 2 - usb and wifi detailed, 3 - usb and wifi only by request (manual control)
-#define KeepWifiActive 1 	// 0 - close connection, 1 - don't close	   
+int DEBUG 2       	    // 0 - no response, 1 - only usb, 2 - usb and wifi detailed, 3 - usb and wifi only by request (manual control)
+int KeepWifiActive 1 	// 0 - close connection, 1 - don't close	   
 boolean WifiEnabled = false;
 boolean IrEnabled = true;
+boolean BotPause = false;
 // ====================
 
 
@@ -107,9 +108,24 @@ void setup() {
    PrintText("Self-test is completed. Going to live!");
 }
 
+
 void loop() 
 {
-	if(WifiEnabled) 
+	// Check IR first. It's always enabled
+	if (irrecv.decode(&results))
+	{
+		ExecuteCommand(FindCommandFromIr(results.value));
+		PrintText(results.value)
+		//Serial.println(results.value, HEX);
+		irrecv.resume(); // Receive the next value
+	}
+	
+
+	if(BotPause) return;
+
+
+	// Check Wifi
+  	if(WifiEnabled) 
 	{
 		if(CheckConnection())
 		{
@@ -125,32 +141,14 @@ void loop()
 		}
 	}
 
-	// looks bad. redo
+
+	// If no commands available and brain enabled - live by yourself!
 	if(!WifiEnabled || controlType==1)
 	{
-//		BrainLoop();
+		//	BrainLoop();
 	}
 
-	
 
-	if (irrecv.decode(&results))
-	{
-		ExecuteCommand(FindCommandFromIr(results.value));
-
-		Serial.println(results.value, HEX);
-		irrecv.resume(); // Receive the next value
-	}
-	
-  
-	delay(100);  
+	delay(1);  
 }
 
-
-void PrintText(String text)
-{
-	if(DEBUG>0) 
-	{
-		Serial.println(text);
-		if(DEBUG>1 && WifiEnabled) {sendResponse(text); delay(100);}
-	}	        
-}

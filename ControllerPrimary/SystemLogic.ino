@@ -136,6 +136,16 @@ boolean ExecuteCommand(String command)
         else if (Compare("HeadPingL", command)==0) {
 			HeadMoveL();
         } 
+		else if (Compare("BotOnPause", command)==0) {
+			if(BotPause==true)
+			{
+				BotPause=false;
+			}
+			else
+			{
+				BotPause=true;
+			}
+        } 
 		else
 		{
 			return false;
@@ -158,5 +168,13 @@ char Compare(char* This, String command)
 }
 
 
-
-
+void PrintText(String text)
+{
+	if(DEBUG>0) 
+	{
+		Serial.println(text);
+		if(DEBUG>1 && WifiEnabled) {
+			sendResponse(text); 
+		}
+	}	        
+}
