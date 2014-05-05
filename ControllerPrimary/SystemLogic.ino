@@ -125,39 +125,13 @@ boolean ExecuteCommand(String command)
 			HeadMoveL();
         } 
 		else if (Compare("BotOnPause", command)==0) {
-			if(BotPause==true)
-			{
-				BotPause=false;
-			}
-			else
-			{
-				BotPause=true;
-			}
+			BotOnPauseOnOff();
         } 
 		else if (Compare("EnableWifi", command)==0) {
-			if(WifiEnabled==true)		// if wifi enabled
-			{							// then disable wifi and do manual mode
-				WifiEnabled=false;
-				client.stop();
-				controlType=3;
-			}
-			else
-			{							// else enable wifi and do wifi only
-				WifiEnabled=true;
-				ConnectToWifi();
-				ConnectToSite();
-				controlType=2; 
-			}
+			EnableWifiModeOnOff();
         }	
 		else if (Compare("EnableBrain", command)==0) {
-			if(controlType==1)			// if auto mode
-			{							// disable auto and do ir only 
-				controlType=3;
-			}
-			else
-			{							// else do auto mode
-				controlType=1; 
-			}
+			EnableBrainModeOnOff();
         }		
 		else
 		{

@@ -75,6 +75,7 @@
     <None Include="CallSlaveServices.ino">
       <FileType>CppCode</FileType>
     </None>
+    <None Include="ComandLogic.ino" />
     <None Include="EnvironmentLogic.ino">
       <FileType>CppCode</FileType>
     </None>

@@ -25,6 +25,7 @@
     <None Include="WifiLogic.ino" />
     <None Include="ControllerPrimary.ino" />
     <None Include="IrControllerMapping.ino" />
+    <None Include="ComandLogic.ino" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Visual Micro\.ControllerPrimary.vsarduino.h">
