@@ -93,6 +93,7 @@
     <None Include="SystemLogic.ino">
       <FileType>CppCode</FileType>
     </None>
+    <None Include="Test.ino" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

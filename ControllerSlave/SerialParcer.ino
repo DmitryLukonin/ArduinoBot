@@ -1,20 +1,4 @@
-//char Compare(char* This)
-//{             
-//                  if (strcmp(inData,This)  == 0) 
-//                  {
-//                    index=0;
-//                    char inData[20];
-//                    return(0);
-//                  }
-//                  else 
-//                  {
-//                    index=0;
-//                    char inData[20];
-//                    return(1);
-//                  }     
-//}
-
-char Compare(char* This, char* RecievedCommand)  // replace for compare
+char Compare(char* This, char* RecievedCommand) 
 {
 	if (strcmp(RecievedCommand, This) == 0)
 	{
@@ -29,33 +13,6 @@ char Compare(char* This, char* RecievedCommand)  // replace for compare
 		return(1);
 	}
 }
-
-
-
-//void GetString(){
-//    while (Serial1.available() > 0) // Don't read unless
-//                                   // there you know there is data
-//    {
-//        if(index < 19) // One less than the size of the array
-//        {
-//            inChar = Serial1.read(); // Read a character
-//                        
-//            if (inChar == 59)  //send a ; before your string as a start byte 
-//            {
-//              String test(inData);
-//              Serial.print("whole data: ");
-//              Serial.println(test);
-//              return;
-//            }
-//            else
-//            {
-//              inData[index] = inChar; // Store it
-//              index++; // Increment where to write next
-//              inData[index] = '\0'; // Null terminate the string
-//            }
-//        }      
-//    }
-//}
 
 
 int readline(int readch, char *buffer, int len)   // replace for GetString

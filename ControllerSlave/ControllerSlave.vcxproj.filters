@@ -27,5 +27,6 @@
     <None Include="SerialParcer.ino" />
     <None Include="ServoLogic.ino" />
     <None Include="SystemLogic.ino" />
+    <None Include="Test.ino" />
   </ItemGroup>
 </Project>

@@ -4,7 +4,6 @@ int CheckDistance()
 {
   long distance=0;
   unsigned char x=0;
-  bool toobig=0;
 
   for (unsigned char i=0; i <= HeadTrigersCount; i++)
   {
@@ -14,14 +13,7 @@ int CheckDistance()
     {
       distance=distance+tempDist;
       x++;
-      toobig=false;                        
     }
-    else
-    {
-      toobig=true;
-    }
-
-    delay(1);
   }
 
   int averegeDistance = distance/x;    

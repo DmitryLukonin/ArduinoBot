@@ -20,10 +20,7 @@ void CheckTrigers()
 
 void ConfigureRnd()
 {
-  //if (DEBUG) {Serial.print("Setup distance: "); Serial.println(temp);}
     randomSeed(micros());	
-  //if (DEBUG) {Serial.println("Setup is done");}
-
 }
 
 void ConfigureTriger(unsigned char TrigerId, unsigned long TrigerStopTime)
@@ -34,30 +31,28 @@ void ConfigureTriger(unsigned char TrigerId, unsigned long TrigerStopTime)
 
   switch (TrigerId)
   {
-  case 1:        
-    if(currentMillis+TrigerStopTime+1000<4294967295)
-    {
-      TimerTriger1=currentMillis+TrigerStopTime;
-    }
-    else
-    {
-      unsigned long differences =  (currentMillis+TrigerStopTime+1000)-4294967295;
-      TimerTriger1=TrigerStopTime-differences;
-    }
-    break;
-  case 2:        
-    if(currentMillis+TrigerStopTime+1000<4294967295)
-    {
-      TimerTriger2=currentMillis+TrigerStopTime;
-    }
-    else
-    {
-      unsigned long differences =  (currentMillis+TrigerStopTime+1000)-4294967295;
-      TimerTriger2=TrigerStopTime-differences;
-    }
-    break;
-  default:
-    //if (DEBUG) {Serial.println("hmm");}
-    break;
+	  case 1:        
+	  	TimerTriger1=GetStopTimeForTriger(TrigerStopTime);
+		break;
+	  case 2:        
+		TimerTriger2=GetStopTimeForTriger(TrigerStopTime);
+		break;
+	  default:
+		//if (DEBUG) {Serial.println("hmm");}
+		break;
   }
+}
+
+unsigned long GetStopTimeForTriger(unsigned long TrigerStopTime)
+{
+	currentMillis = millis();
+	if(currentMillis+TrigerStopTime+1000<4294967295)
+	{
+		return=currentMillis+TrigerStopTime;
+	}
+	else
+	{
+		unsigned long differences =  (currentMillis+TrigerStopTime+1000)-4294967295;
+		return=TrigerStopTime-differences;
+	}
 }
