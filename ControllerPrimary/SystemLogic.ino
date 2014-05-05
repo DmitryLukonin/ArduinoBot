@@ -1,15 +1,5 @@
 //======================================================== System logic =================================================
 
-
-void Rest(int time)
-{
-	if(time>99 && controlType>0)
-	{
-		FindAndExecuteCommandFromWifi();
-	}
-	delay(time-99);
-}
-
 void ConfigureRnd()
 {
 	randomSeed(micros());	
@@ -28,21 +18,18 @@ void CleanSerial()
     }
 }
 
-boolean FindAndExecuteCommandFromWifi()
+String FindCommandFromWifi()
 {
-  
-  Serial.print("Looking for the command... ");
+    Serial.print("Looking for the command... ");
 	String response = ReadDataFromWifi();
 	if(response.length()==0) return false;
 	
 	String command = GetCommandFromString(response);
 	if(command.length()==0) return false;
-	Serial.println(command);
-	
-	boolean result = ExecuteCommand(command);
-	return result;
-	
+
+	return command;
 }
+
 
 String GetCommandFromString(String workZone)
 {
@@ -72,7 +59,7 @@ String FindCommandFromIr(unsigned long command)
 	if (command == IrCommand7)  return "";
 	if (command == IrCommand8)  return "MoveBack";
 	if (command == IrCommand9)  return "";
-	if (command == IrCommandPS)  return "";
+	if (command == IrCommandPS)  return "EnableWifi";
 	if (command == IrCommandChSet)  return "BotModeSwitch";
 
 	return "";
@@ -146,6 +133,20 @@ boolean ExecuteCommand(String command)
 				BotPause=true;
 			}
         } 
+		else if (Compare("EnableWifi", command)==0) {
+			if(WifiEnabled==true)
+			{
+				WifiEnabled=false;
+			}
+			else
+			{
+				WifiEnabled=true;
+				ConnectToWifi();
+				delay(2000);
+				ConnectToSite();
+				Serial1.setTimeout(1500); 
+			}
+        }		
 		else
 		{
 			return false;

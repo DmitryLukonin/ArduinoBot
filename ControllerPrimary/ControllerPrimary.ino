@@ -12,7 +12,6 @@
 // ==================== Control
 int controlType=2; 			// 0 - fully automate, 1 - automate but check the command (wifi and ir)  2 - wifi manual only 3 - ir only
 int DEBUG 2       	    // 0 - no response, 1 - only usb, 2 - usb and wifi detailed, 3 - usb and wifi only by request (manual control)
-int KeepWifiActive 1 	// 0 - close connection, 1 - don't close	   
 boolean WifiEnabled = false;
 boolean IrEnabled = true;
 boolean BotPause = false;
@@ -28,14 +27,11 @@ decode_results results;
 
 // ==================== Wifi
 char ssid[] = "Stix"; //  your network SSID (name) 
-char pass[] = "ZxEYjnQRhE";    // your network password (use for WPA, or use as key for WEP)
+char pass[] = "ZxEYjnQRhE";    // your network password (use for WPA, or use as key for WEP). It's just a router guest password. No need to hack :)  But please keep your password safe! 
 int wifiStatus = WL_IDLE_STATUS;
 int keyIndex = 0;            // your network key Index number (needed only for WEP)
 
-//IPAddress server(192,168,0,107);  // numeric (no DNS)
-//IPAddress server(96,31,35,129);  // numeric (no DNS)
 char server[] = "www.icedock.net";
-//int serverPort = 81;
 int serverPort = 80;
 int status = WL_IDLE_STATUS;
 boolean lastConnected = false;   
@@ -115,9 +111,8 @@ void loop()
 	if (irrecv.decode(&results))
 	{
 		ExecuteCommand(FindCommandFromIr(results.value));
-		PrintText(results.value)
-		//Serial.println(results.value, HEX);
-		irrecv.resume(); // Receive the next value
+		PrintText(results.value);
+		irrecv.resume();
 	}
 	
 
@@ -127,18 +122,8 @@ void loop()
 	// Check Wifi
   	if(WifiEnabled) 
 	{
-		if(CheckConnection())
-		{
-			boolean command = FindAndExecuteCommandFromWifi();
-			if(!command && controlType==1)
-			{
-				BrainLoop();
-			}					
-		}		
-		else
-		{
-			ConnectToWifi();
-		}
+		if(!CheckConnection()) {ConnectToWifi();}
+		ExecuteCommand(FindCommandFromWifi());
 	}
 
 

@@ -155,8 +155,5 @@ void sendResponse(String response) {
 	client.print(content);
 		Serial.println(content);
 	client.println();
-	
-	
-	//if(KeepWifiActive==0) {client.stop();}
   } 
 }
