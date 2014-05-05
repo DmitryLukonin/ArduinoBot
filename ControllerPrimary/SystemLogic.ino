@@ -45,13 +45,13 @@ String FindCommandFromIr(unsigned long command)
 	if (command == IrCommandGoPause)  return "BotOnPause";
 	if (command == IrCommandChM)  return "";
 	if (command == IrCommandChP)  return "";
-	if (command == IrCommandEq)  return "HeadLight";
+	if (command == IrCommandEq)  return "VolumeStop";
 	if (command == IrCommandVolM)  return "VolumeD";
 	if (command == IrCommandVolP)  return "VolumeI";
 	if (command == IrCommand0)  return "HeadPing";
 	if (command == IrCommandPrev)  return "HeadPingL";
 	if (command == IrCommandNext)  return "HeadPingR";
-	if (command == IrCommand1)  return "";
+	if (command == IrCommand1)  return "HeadLight";
 	if (command == IrCommand2)  return "MoveForvard";
 	if (command == IrCommand3)  return "";
 	if (command == IrCommand4)  return "MoveLeft";
@@ -132,6 +132,15 @@ boolean ExecuteCommand(String command)
         }	
 		else if (Compare("EnableBrain", command)==0) {
 			EnableBrainModeOnOff();
+        }		
+		else if (Compare("VolumeD", command)==0) {
+			MusicVolumeDecrease();
+        }		
+		else if (Compare("VolumeI", command)==0) {
+			MusicVolumeIncrease();
+        }
+		else if (Compare("VolumeStop", command)==0) {
+			MusicOnOff();
         }		
 		else
 		{

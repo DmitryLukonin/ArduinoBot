@@ -39,3 +39,27 @@ void EnableBrainModeOnOff()
 				controlType=1; 
 			}
 }
+
+void MusicVolumeIncrease()
+{
+	tmrpcm.volume(1); 
+}
+
+void MusicVolumeDecrease()
+{
+	tmrpcm.volume(0); 
+}
+
+void MusicOnOff()
+{
+	if(MusicOn==true)
+	{
+		tmrpcm.disable();
+		MusicOn=false;
+	}
+	else
+	{
+		configureMusic();
+		MusicOn=true;
+	}
+}

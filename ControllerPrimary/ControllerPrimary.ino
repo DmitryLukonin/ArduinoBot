@@ -10,7 +10,7 @@
 //#include "WaveUtil.h"
 
 // ==================== Control
-int controlType=2; 			// 0 - fully automate but check ir, 1 - automate but check wifi and ir,  2 - wifi manual but check ir, 3 - ir only
+int controlType=3; 			// 0 - fully automate but check ir, 1 - automate but check wifi and ir,  2 - wifi manual but check ir, 3 - ir only
 int DEBUG 2       	    // 0 - no response, 1 - only usb, 2 - usb and wifi detailed, 3 - usb and wifi only by request (manual control)
 boolean WifiEnabled = false;
 boolean IrEnabled = true;
@@ -45,6 +45,7 @@ TMRpcm tmrpcm;   // create an object for use in this sketch
 
 // time to play each tone in milliseconds
 #define PLAY_TIME 200
+boolean MusicOn=true;
 
 // ==================== Breaks data
 unsigned char DistanceToBreakLimit=26; // cm
@@ -72,13 +73,7 @@ void setup() {
    Serial.begin(9600);
    Serial1.begin(9600);
    
-   tmrpcm.speakerPin = 11; //11 on Mega, 9 on Uno, Nano, etc
-   if (!SD.begin(SD_ChipSelectPin)) {  // see if the card is present and can be initialized:
-    Serial.println("SD fail");  
-   }
-   tmrpcm.setVolume(musicVolume);
-   tmrpcm.quality(musicQuality);
-
+   configureMusic();
    ConfigureRnd();  
    
    //Serial.print("Free RAM: ");       // This can help with debugging, running out of RAM is bad
@@ -132,3 +127,12 @@ void loop()
 	}
 }
 
+void configureMusic()
+{
+   tmrpcm.speakerPin = 11; //11 on Mega, 9 on Uno, Nano, etc
+   if (!SD.begin(SD_ChipSelectPin)) {  // see if the card is present and can be initialized:
+    Serial.println("SD fail");  
+   }
+   tmrpcm.setVolume(musicVolume);
+   tmrpcm.quality(musicQuality);
+}
