@@ -21,6 +21,7 @@ void CleanSerial()
 String FindCommandFromWifi()
 {
     Serial.print("Looking for the command... ");
+
 	String response = ReadDataFromWifi();
 	if(response.length()==0) return false;
 	
@@ -63,7 +64,6 @@ String FindCommandFromIr(unsigned long command)
 	if (command == IrCommandChSet)  return "BotModeSwitch";
 
 	return "";
-
 }
 
 
@@ -71,6 +71,7 @@ String FindCommandFromIr(unsigned long command)
 boolean ExecuteCommand(String command)
 {
 	PrintText(command);
+	if(command.length()==0) return false;
 
         if (Compare("HeadLight", command)==0) {
           HeadLight();
@@ -142,9 +143,6 @@ boolean ExecuteCommand(String command)
 			{
 				WifiEnabled=true;
 				ConnectToWifi();
-				delay(2000);
-				ConnectToSite();
-				Serial1.setTimeout(1500); 
 			}
         }		
 		else
@@ -156,16 +154,16 @@ boolean ExecuteCommand(String command)
 
 char Compare(char* This, String command)
 {             
-         char inData[20]; 
-         command.toCharArray(inData,20);
-                  if (strcmp(inData,This)  == 0) 
-                  {
-                    return(0);
-                  }
-                  else 
-                  {
-                    return(1);
-                  }     
+	char inData[20]; 
+	command.toCharArray(inData,20);
+	if (strcmp(inData,This)  == 0) 
+	{
+		return(0);
+	}
+	else 
+	{
+		return(1);
+	}     
 }
 
 

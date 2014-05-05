@@ -92,7 +92,6 @@ void setup() {
    if(WifiEnabled)
    {
 	ConnectToWifi();
-	delay(2000);
 	ConnectToSite();
    }
    
@@ -122,7 +121,6 @@ void loop()
 	// Check Wifi
   	if(WifiEnabled) 
 	{
-		if(!CheckConnection()) {ConnectToWifi();}
 		ExecuteCommand(FindCommandFromWifi());
 	}
 
