@@ -31,8 +31,8 @@ void EnableWifiModeOnOff()
 void EnableBrainModeOnOff()
 {
 			if(controlType==1)			// if auto mode
-			{							// disable auto and do ir only 
-				controlType=3;
+			{							// disable auto and do wifi(if enabled) and ir only 
+				controlType=2;
 			}
 			else
 			{							// else do auto mode
