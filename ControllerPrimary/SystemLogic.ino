@@ -61,7 +61,7 @@ String FindCommandFromIr(unsigned long command)
 	if (command == IrCommand8)  return "MoveBack";
 	if (command == IrCommand9)  return "";
 	if (command == IrCommandPS)  return "EnableWifi";
-	if (command == IrCommandChSet)  return "BotModeSwitch";
+	if (command == IrCommandChSet)  return "EnableBrain";
 
 	return "";
 }
@@ -135,14 +135,28 @@ boolean ExecuteCommand(String command)
 			}
         } 
 		else if (Compare("EnableWifi", command)==0) {
-			if(WifiEnabled==true)
-			{
+			if(WifiEnabled==true)		// if wifi enabled
+			{							// then disable wifi and do manual mode
 				WifiEnabled=false;
+				client.stop();
+				controlType=3;
 			}
 			else
-			{
+			{							// else enable wifi and do wifi only
 				WifiEnabled=true;
 				ConnectToWifi();
+				ConnectToSite();
+				controlType=2; 
+			}
+        }	
+		else if (Compare("EnableBrain", command)==0) {
+			if(controlType==1)			// if auto mode
+			{							// disable auto and do ir only 
+				controlType=3;
+			}
+			else
+			{							// else do auto mode
+				controlType=1; 
 			}
         }		
 		else

@@ -56,7 +56,7 @@ void ConnectToWifi()
 	else
 	{
 		WifiEnabled=false;
-		PrintText("Cannot connect to wifi. Will do it myself!");
+		PrintText("Cannot connect to wifi!");
 	}
 }
 

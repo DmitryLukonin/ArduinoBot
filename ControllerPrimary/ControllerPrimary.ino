@@ -10,7 +10,7 @@
 //#include "WaveUtil.h"
 
 // ==================== Control
-int controlType=2; 			// 0 - fully automate, 1 - automate but check the command (wifi and ir)  2 - wifi manual only 3 - ir only
+int controlType=2; 			// 0 - fully automate but check ir, 1 - automate but check wifi and ir,  2 - wifi manual but check ir, 3 - ir only
 int DEBUG 2       	    // 0 - no response, 1 - only usb, 2 - usb and wifi detailed, 3 - usb and wifi only by request (manual control)
 boolean WifiEnabled = false;
 boolean IrEnabled = true;
@@ -119,19 +119,16 @@ void loop()
 
 
 	// Check Wifi
-  	if(WifiEnabled) 
+  	if(WifiEnabled && controlType>0) 
 	{
 		ExecuteCommand(FindCommandFromWifi());
 	}
 
 
-	// If no commands available and brain enabled - live by yourself!
-	if(!WifiEnabled || controlType==1)
+	// If brain mode enabled - live by yourself!
+	if(controlType<2)
 	{
-		//	BrainLoop();
+		BrainLoop();
 	}
-
-
-	delay(1);  
 }
 
