@@ -2,7 +2,7 @@ int HeadLight()
 {
   CleanSerial();
   Serial1.println(";HeadLight;");
-  int value = Serial1..parseInt();
+  int value = Serial1.parseInt();
   PrintText("Light: " + String(value));
   return value;
 }

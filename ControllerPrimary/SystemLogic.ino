@@ -23,10 +23,10 @@ String FindCommandFromWifi()
     Serial.print("Looking for the command... ");
 
 	String response = ReadDataFromWifi();
-	if(response.length()==0) return false;
+	if(response.length()==0) return "";
 	
 	String command = GetCommandFromString(response);
-	if(command.length()==0) return false;
+	if(command.length()==0) return "";
 
 	return command;
 }

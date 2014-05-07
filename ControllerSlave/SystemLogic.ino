@@ -48,11 +48,11 @@ unsigned long GetStopTimeForTriger(unsigned long TrigerStopTime)
 	currentMillis = millis();
 	if(currentMillis+TrigerStopTime+1000<4294967295)
 	{
-		return=currentMillis+TrigerStopTime;
+		return currentMillis+TrigerStopTime;
 	}
 	else
 	{
 		unsigned long differences =  (currentMillis+TrigerStopTime+1000)-4294967295;
-		return=TrigerStopTime-differences;
+		return TrigerStopTime-differences;
 	}
 }

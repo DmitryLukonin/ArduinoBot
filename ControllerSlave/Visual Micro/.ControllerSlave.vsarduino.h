@@ -41,8 +41,6 @@ extern "C" void __cxa_pure_virtual() {;}
 
 //
 //
-void TestHeadMoving();
-void TestHeadPing();
 int CheckDistance();
 long PingDistance();
 int microsecondsToCentimeters(long microseconds);
@@ -66,6 +64,9 @@ void HeadMoving(int value);
 void CheckTrigers();
 void ConfigureRnd();
 void ConfigureTriger(unsigned char TrigerId, unsigned long TrigerStopTime);
+unsigned long GetStopTimeForTriger(unsigned long TrigerStopTime);
+void TestHeadMoving();
+void TestHeadPing();
 
 #include "F:\Program Files My\Arduino\arduino-1.0.5\hardware\arduino\cores\arduino\arduino.h"
 #include "F:\Program Files My\Arduino\arduino-1.0.5\hardware\arduino\variants\micro\pins_arduino.h" 
@@ -76,4 +77,5 @@ void ConfigureTriger(unsigned char TrigerId, unsigned long TrigerStopTime);
 #include "F:\Users\Demon\Documents\Visual Studio 2013\Projects\ArduinoBot\ControllerSlave\SerialParcer.ino"
 #include "F:\Users\Demon\Documents\Visual Studio 2013\Projects\ArduinoBot\ControllerSlave\ServoLogic.ino"
 #include "F:\Users\Demon\Documents\Visual Studio 2013\Projects\ArduinoBot\ControllerSlave\SystemLogic.ino"
+#include "F:\Users\Demon\Documents\Visual Studio 2013\Projects\ArduinoBot\ControllerSlave\Test.ino"
 #endif

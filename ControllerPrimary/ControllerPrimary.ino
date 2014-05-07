@@ -11,7 +11,7 @@
 
 // ==================== Control
 int controlType=3; 			// 0 - fully automate but check ir, 1 - automate but check wifi and ir,  2 - wifi manual but check ir, 3 - ir only
-int DEBUG 2       	    // 0 - no response, 1 - only usb, 2 - usb and wifi detailed, 3 - usb and wifi only by request (manual control)
+#define DEBUG 2       	    // 0 - no response, 1 - only usb, 2 - usb and wifi detailed, 3 - usb and wifi only by request (manual control)
 boolean WifiEnabled = false;
 boolean IrEnabled = true;
 boolean BotPause = false;
@@ -105,7 +105,7 @@ void loop()
 	if (irrecv.decode(&results))
 	{
 		ExecuteCommand(FindCommandFromIr(results.value));
-		PrintText(results.value);
+		//PrintText(results.value, HEX);
 		irrecv.resume();
 	}
 	

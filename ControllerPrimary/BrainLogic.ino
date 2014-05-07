@@ -105,7 +105,6 @@ void BrainMoveCarefullLeLeft()
 {
 	MoveForvard();
   DistanceLeft = HeadPingL();
-  Rest(100);
 
   if(DistanceLeft>DistanceToBreakLimit)  
   {
@@ -117,7 +116,7 @@ void BrainMoveCarefullLeRight()
 {
 	MoveForvard();
   DistanceRight = HeadPingR();
-  Rest(100);
+
 
   if(DistanceRight>DistanceToBreakLimit)  
   {
@@ -128,13 +127,11 @@ void BrainMoveCarefullLeRight()
 void BrainMovBreAnalize(boolean enclosed)
 {
   DistanceFront = HeadPingF();
-  Rest(100);
+
 
   DistanceLeft = HeadPingL();
-  Rest(100);
 
   DistanceRight = HeadPingR();
-  Rest(100);  
 
   MoveStop();
   

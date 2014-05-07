@@ -78,7 +78,7 @@ void loop() {
   
 
   static char buffer[80];
-  if (readline(Serial.read(), buffer, 80) > 0) {
+  if (readline(Serial1.read(), buffer, 80) > 0) {
 	  if (Compare("Ping", buffer) == 0) {
 		  Serial.println("Ping");
 		  Serial1.println(1);
@@ -115,50 +115,50 @@ void loop() {
 		  Serial.println("MoveFullTurnRight");
 		  MoveFullTurnRight();
 	  }
-	  else if (Compare("MoveStop", buffer) == 0, buffer) {
+	  else if (Compare("MoveStop", buffer) == 0) {
 		  Serial.println("MoveStop");
 		  MoveStop();
 	  }
-	  else if (Compare("HeadMoveF", buffer) == 0, buffer) {
+	  else if (Compare("HeadMoveF", buffer) == 0) {
 		  Serial.println("HeadMoveF");
 		  HeadMoving(HeadForward);
 	  }
-	  else if (Compare("HeadMoveR", buffer) == 0, buffer) {
+	  else if (Compare("HeadMoveR", buffer) == 0) {
 		  Serial.println("HeadMoveR");
 		  HeadMoving(HeadRight);
 	  }
-	  else if (Compare("HeadMoveL", buffer) == 0, buffer) {
+	  else if (Compare("HeadMoveL", buffer) == 0) {
 		  Serial.println("HeadMoveR");
 		  HeadMoving(HeadLeft);
 	  }
-	  else if (Compare("HeadPing", buffer) == 0, buffer) {
+	  else if (Compare("HeadPing", buffer) == 0) {
 		  Serial.println("HeadPing");
 		  int distance = CheckDistance();
 		  Serial1.println(distance);
 		  Serial.println(distance);
 	  }
-	  else if (Compare("HeadPingF", buffer) == 0, buffer) {
+	  else if (Compare("HeadPingF", buffer) == 0) {
 		  Serial.println("HeadPingF");
 		  HeadMoving(HeadForward);
 		  int distance = CheckDistance();
 		  Serial1.println(distance);
 		  Serial.println(distance);
 	  }
-	  else if (Compare("HeadPingR", buffer) == 0, buffer) {
+	  else if (Compare("HeadPingR", buffer) == 0) {
 		  Serial.println("HeadPingR");
 		  HeadMoving(HeadRight);
 		  int distance = CheckDistance();
 		  Serial1.println(distance);
 		  Serial.println(distance);
 	  }
-	  else if (Compare("HeadPingL", buffer) == 0, buffer) {
+	  else if (Compare("HeadPingL", buffer) == 0) {
 		  Serial.println("HeadPingL");
 		  HeadMoving(HeadLeft);
 		  int distance = CheckDistance();
 		  Serial1.println(distance);
 		  Serial.println(distance);
 	  }
-	  else if (Compare("HeadLight", buffer) == 0, buffer) {
+	  else if (Compare("HeadLight", buffer) == 0) {
 		  Serial.println("HeadLight");
 		  CheckLight();
 		  int light = CheckLight();
