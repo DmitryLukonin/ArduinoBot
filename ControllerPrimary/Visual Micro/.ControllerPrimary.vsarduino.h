@@ -74,6 +74,7 @@ void MusicVolumeDecrease();
 void MusicOnOff();
 int CheckLight();
 int CheckDistance();
+boolean CheckMotion();
 void playcomplete(char *name);
 void playfile(char *name);
 void playFileNoPriority(char *name);

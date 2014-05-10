@@ -11,3 +11,11 @@ int CheckDistance()
 {
   return HeadPing();
 }
+
+
+// ======================================================== Motion Sensor logic =================================================
+boolean CheckMotion()
+{
+
+
+}

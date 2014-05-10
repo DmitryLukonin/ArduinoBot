@@ -25,6 +25,10 @@ decode_results results;
 // ==================== 
 
 
+// ==================== Motion
+#define MotionPin 2 
+// ==================== 
+
 // ==================== Wifi
 char ssid[] = "Stix"; //  your network SSID (name) 
 char pass[] = "ZxEYjnQRhE";    // your network password (use for WPA, or use as key for WEP). It's just a router guest password. No need to hack :)  But please keep your password safe! 
@@ -78,6 +82,9 @@ void setup() {
    
    //Serial.print("Free RAM: ");       // This can help with debugging, running out of RAM is bad
 
+   pinMode(MotionPin, INPUT);
+
+
    if (IrEnabled)
    {
        PrintText("Enable IR");
@@ -125,6 +132,12 @@ void loop()
 	{
 		BrainLoop();
 	}
+
+
+	Serial.println(digitalRead(MotionPin));
+	delay(1000);
+
+
 }
 
 void configureMusic()
