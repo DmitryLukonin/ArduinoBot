@@ -2,12 +2,15 @@ void BotOnPauseOnOff()
 {
 			if(BotPause==true)
 			{
+				playcomplete("crystal.wav");
 				BotPause=false;
 			}
 			else
 			{
+				playcomplete("Wov3.wav");
 				BotPause=true;
 			}
+			
 }
 
 
@@ -15,12 +18,14 @@ void EnableWifiModeOnOff()
 {
 			if(WifiEnabled==true)		// if wifi enabled
 			{							// then disable wifi and do manual mode
+				playcomplete("Off.wav");
 				WifiEnabled=false;
 				client.stop();
 				controlType=3;
 			}
 			else
 			{							// else enable wifi and do wifi only
+				playcomplete("On.wav");
 				WifiEnabled=true;
 				ConnectToWifi();
 				ConnectToSite();
@@ -32,10 +37,12 @@ void EnableBrainModeOnOff()
 {
 			if(controlType==1)			// if auto mode
 			{							// disable auto and do wifi(if enabled) and ir only 
+				playcomplete("On.wav");
 				controlType=2;
 			}
 			else
 			{							// else do auto mode
+				playcomplete("Off.wav");
 				controlType=1; 
 			}
 }

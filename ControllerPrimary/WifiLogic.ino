@@ -67,6 +67,7 @@ String ReadDataFromWifi()
 	ConnectToSite();
 
 	String response = "";
+
 	if (client.connected())
 	{
 		client.flush();

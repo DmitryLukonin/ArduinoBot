@@ -51,7 +51,7 @@ TMRpcm tmrpcm;   // create an object for use in this sketch
 #define PLAY_TIME 200
 
 boolean MusicOn=true;
-char* MusicList[]{"", "", "", "", "", "", "", "", "", ""};
+char* MusicList[]={"", "", "", "", "", "", "", "", "", ""};
 unsigned int musicCurrent = 0;
 
 // ==================== Breaks data
@@ -106,6 +106,11 @@ void setup() {
    //PrintText("Start self-test");
    //Test();
    PrintText("Self-test is completed. Going to live!");
+   playcomplete("Nya4.wav");
+   delay(3000);
+
+   tmrpcm.stopPlayback();
+   tmrpcm.disable();
 }
 
 
@@ -144,5 +149,5 @@ void configureMusic()
     Serial.println("SD fail");  
    }
    tmrpcm.setVolume(musicVolume);
-   tmrpcm.quality(musicQuality);
+   tmrpcm.quality(0);
 }

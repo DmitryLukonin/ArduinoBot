@@ -11,6 +11,7 @@ void playfile(char *name) {
       tmrpcm.stopPlayback();
     }
   
+	tmrpcm.play(name);
    // tmrpcm.play("BENHILL.WAV"); 
 
     // ok time to play! start playback
