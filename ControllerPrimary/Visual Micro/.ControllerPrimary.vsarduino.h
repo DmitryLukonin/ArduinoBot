@@ -78,6 +78,8 @@ boolean CheckMotion();
 void playcomplete(char *name);
 void playfile(char *name);
 void playFileNoPriority(char *name);
+void CheckAndPlayNextMusicInLine();
+void AddMusicToLine(char* name);
 void SleepStart();
 void SleepEnd();
 void ConfigureRnd();

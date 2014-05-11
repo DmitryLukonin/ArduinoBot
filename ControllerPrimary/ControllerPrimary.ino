@@ -49,7 +49,10 @@ TMRpcm tmrpcm;   // create an object for use in this sketch
 
 // time to play each tone in milliseconds
 #define PLAY_TIME 200
+
 boolean MusicOn=true;
+char* MusicList[]{"", "", "", "", "", "", "", "", "", ""};
+unsigned int musicCurrent = 0;
 
 // ==================== Breaks data
 unsigned char DistanceToBreakLimit=26; // cm
@@ -120,24 +123,18 @@ void loop()
 	if(BotPause) return;
 
 
-	// Check Wifi
-  	if(WifiEnabled && controlType>0) 
-	{
-		ExecuteCommand(FindCommandFromWifi());
-	}
+	//// Check Wifi
+ // 	if(WifiEnabled && controlType>0) 
+	//{
+	//	ExecuteCommand(FindCommandFromWifi());
+	//}
 
 
-	// If brain mode enabled - live by yourself!
-	if(controlType<2)
-	{
-		BrainLoop();
-	}
-
-
-	Serial.println(digitalRead(MotionPin));
-	delay(1000);
-
-
+	//// If brain mode enabled - live by yourself!
+	//if(controlType<2)
+	//{
+	//	BrainLoop();
+	//}
 }
 
 void configureMusic()

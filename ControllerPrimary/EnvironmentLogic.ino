@@ -16,6 +16,12 @@ int CheckDistance()
 // ======================================================== Motion Sensor logic =================================================
 boolean CheckMotion()
 {
+	if (digitalRead(MotionPin) == 1)
+	{
+		PrintText("Motion detected");
+		return true;
+	}
 
-
+	PrintText("No motion detected");
+	return false;
 }
