@@ -31,7 +31,7 @@ decode_results results;
 
 // ==================== Wifi
 char ssid[] = "Stix"; //  your network SSID (name) 
-char pass[] = "ZxEYjnQRhE";    // your network password (use for WPA, or use as key for WEP). It's just a router guest password. No need to hack :)  But please keep your password safe! 
+char pass[] = "ZxEYjnQRhE";    // your network password (use for WPA, or use as key for WEP). It's just a guest password for internal router. No need to hack :)  But please keep your password safe! 
 int wifiStatus = WL_IDLE_STATUS;
 int keyIndex = 0;            // your network key Index number (needed only for WEP)
 
@@ -127,7 +127,7 @@ void loop()
 
 	if(BotPause) return;
 
-
+	playFileNoPriority("BENHILL.wav");
 	//// Check Wifi
  // 	if(WifiEnabled && controlType>0) 
 	//{
@@ -140,14 +140,17 @@ void loop()
 	//{
 	//	BrainLoop();
 	//}
+
+	//Serial.println(digitalRead(MotionPin));
+	delay(1000);
 }
 
 void configureMusic()
 {
-   tmrpcm.speakerPin = 11; //11 on Mega, 9 on Uno, Nano, etc
+   tmrpcm.speakerPin =6; //11 on Mega, 9 on Uno, Nano, etc
    if (!SD.begin(SD_ChipSelectPin)) {  // see if the card is present and can be initialized:
     Serial.println("SD fail");  
    }
    tmrpcm.setVolume(musicVolume);
-   tmrpcm.quality(0);
+   tmrpcm.quality(1);
 }

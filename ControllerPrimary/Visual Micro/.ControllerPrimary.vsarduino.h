@@ -37,83 +37,17 @@
             
 typedef unsigned char byte;
 extern "C" void __cxa_pure_virtual() {;}
-
-//
-//
-void configureMusic();
-void BrainLoop();
-void Brain();
-void BrainMov();
-void BrainMovBre(boolean danger);
-void BrainMoveCarefullLeLeft();
-void BrainMoveCarefullLeRight();
-void BrainMovBreAnalize(boolean enclosed);
-void BrainMovBreTurn();
-int HeadLight();
-int HeadPing();
-int HeadPingF();
-int HeadPingR();
-int HeadPingL();
-void MoveForvard();
-void MoveBack();
-void MoveRight();
-void MoveLeft();
-void MoveRightTurn();
-void MoveLeftTurn();
-void MoveFullTurnLeft();
-void MoveFullTurnRight();
-void MoveStop();
-void HeadMoveF();
-void HeadMoveR();
-void HeadMoveL();
-void BotOnPauseOnOff();
-void EnableWifiModeOnOff();
-void EnableBrainModeOnOff();
-void MusicVolumeIncrease();
-void MusicVolumeDecrease();
-void MusicOnOff();
-int CheckLight();
-int CheckDistance();
-boolean CheckMotion();
-void playcomplete(char *name);
-void playfile(char *name);
-void playFileNoPriority(char *name);
-void CheckAndPlayNextMusicInLine();
-void AddMusicToLine(char* name);
-void SleepStart();
-void SleepEnd();
-void ConfigureRnd();
-void CleanSerial();
-String FindCommandFromWifi();
-String GetCommandFromString(String workZone);
-String FindCommandFromIr(unsigned long command);
-boolean ExecuteCommand(String command);
-char Compare(char* This, String command);
-void PrintText(String text);
-void Test();
-void TestMusic();
-void TestLight();
-void TestPing();
-void TestPingWithAction();
-void TestEngine();
-void TestHeadMoving();
-void printWifiStatus();
-void ConnectToSite();
-void ConnectToWifi();
-String ReadDataFromWifi();
-void sendResponse(String response);
-
 #include "F:\Program Files My\Arduino\arduino-1.0.5\hardware\arduino\cores\arduino\arduino.h"
 #include "F:\Program Files My\Arduino\arduino-1.0.5\hardware\arduino\variants\mega\pins_arduino.h" 
-#include "F:\Users\Demon\Documents\Visual Studio 2013\Projects\ArduinoBot\ControllerPrimary\ControllerPrimary.ino"
-#include "F:\Users\Demon\Documents\Visual Studio 2013\Projects\ArduinoBot\ControllerPrimary\BrainLogic.ino"
-#include "F:\Users\Demon\Documents\Visual Studio 2013\Projects\ArduinoBot\ControllerPrimary\CallSlaveServices.ino"
-#include "F:\Users\Demon\Documents\Visual Studio 2013\Projects\ArduinoBot\ControllerPrimary\ComandLogic.ino"
-#include "F:\Users\Demon\Documents\Visual Studio 2013\Projects\ArduinoBot\ControllerPrimary\EnvironmentLogic.ino"
-#include "F:\Users\Demon\Documents\Visual Studio 2013\Projects\ArduinoBot\ControllerPrimary\IrControllerMapping.ino"
-#include "F:\Users\Demon\Documents\Visual Studio 2013\Projects\ArduinoBot\ControllerPrimary\MusicMethods.ino"
-#include "F:\Users\Demon\Documents\Visual Studio 2013\Projects\ArduinoBot\ControllerPrimary\SleepLogic.ino"
-#include "F:\Users\Demon\Documents\Visual Studio 2013\Projects\ArduinoBot\ControllerPrimary\SystemLogic.ino"
-#include "F:\Users\Demon\Documents\Visual Studio 2013\Projects\ArduinoBot\ControllerPrimary\TestMethods.ino"
-#include "F:\Users\Demon\Documents\Visual Studio 2013\Projects\ArduinoBot\ControllerPrimary\WifiLogic.ino"
+#include "f:\Users\Demon\documents\visual studio 2013\Projects\ArduinoBot\ControllerPrimary\ControllerPrimary.ino"
+#include "f:\Users\Demon\documents\visual studio 2013\Projects\ArduinoBot\ControllerPrimary\BrainLogic.ino"
+#include "f:\Users\Demon\documents\visual studio 2013\Projects\ArduinoBot\ControllerPrimary\CallSlaveServices.ino"
+#include "f:\Users\Demon\documents\visual studio 2013\Projects\ArduinoBot\ControllerPrimary\ComandLogic.ino"
+#include "f:\Users\Demon\documents\visual studio 2013\Projects\ArduinoBot\ControllerPrimary\EnvironmentLogic.ino"
+#include "f:\Users\Demon\documents\visual studio 2013\Projects\ArduinoBot\ControllerPrimary\IrControllerMapping.ino"
+#include "f:\Users\Demon\documents\visual studio 2013\Projects\ArduinoBot\ControllerPrimary\MusicMethods.ino"
+#include "f:\Users\Demon\documents\visual studio 2013\Projects\ArduinoBot\ControllerPrimary\SleepLogic.ino"
+#include "f:\Users\Demon\documents\visual studio 2013\Projects\ArduinoBot\ControllerPrimary\SystemLogic.ino"
+#include "f:\Users\Demon\documents\visual studio 2013\Projects\ArduinoBot\ControllerPrimary\TestMethods.ino"
+#include "f:\Users\Demon\documents\visual studio 2013\Projects\ArduinoBot\ControllerPrimary\WifiLogic.ino"
 #endif

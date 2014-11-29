@@ -38,44 +38,14 @@
             
 typedef unsigned char byte;
 extern "C" void __cxa_pure_virtual() {;}
-
-//
-//
-int CheckDistance();
-long PingDistance();
-int microsecondsToCentimeters(long microseconds);
-void MoveStop();
-void MoveForvard();
-void MoveBack();
-void MoveRight();
-void MoveLeft();
-void MoveRightTurn();
-void MoveLeftTurn();
-void MoveFullTurnLeft();
-void MoveFullTurnRight();
-void MRf();
-void MRb();
-void MLf();
-void MLb();
-int CheckLight();
-char Compare(char* This, char* RecievedCommand);
-int readline(int readch, char *buffer, int len);
-void HeadMoving(int value);
-void CheckTrigers();
-void ConfigureRnd();
-void ConfigureTriger(unsigned char TrigerId, unsigned long TrigerStopTime);
-unsigned long GetStopTimeForTriger(unsigned long TrigerStopTime);
-void TestHeadMoving();
-void TestHeadPing();
-
 #include "F:\Program Files My\Arduino\arduino-1.0.5\hardware\arduino\cores\arduino\arduino.h"
 #include "F:\Program Files My\Arduino\arduino-1.0.5\hardware\arduino\variants\micro\pins_arduino.h" 
-#include "F:\Users\Demon\Documents\Visual Studio 2013\Projects\ArduinoBot\ControllerSlave\ControllerSlave.ino"
-#include "F:\Users\Demon\Documents\Visual Studio 2013\Projects\ArduinoBot\ControllerSlave\DistanceLogic.ino"
-#include "F:\Users\Demon\Documents\Visual Studio 2013\Projects\ArduinoBot\ControllerSlave\EngineLogic.ino"
-#include "F:\Users\Demon\Documents\Visual Studio 2013\Projects\ArduinoBot\ControllerSlave\LightLogic.ino"
-#include "F:\Users\Demon\Documents\Visual Studio 2013\Projects\ArduinoBot\ControllerSlave\SerialParcer.ino"
-#include "F:\Users\Demon\Documents\Visual Studio 2013\Projects\ArduinoBot\ControllerSlave\ServoLogic.ino"
-#include "F:\Users\Demon\Documents\Visual Studio 2013\Projects\ArduinoBot\ControllerSlave\SystemLogic.ino"
-#include "F:\Users\Demon\Documents\Visual Studio 2013\Projects\ArduinoBot\ControllerSlave\Test.ino"
+#include "f:\Users\Demon\documents\visual studio 2013\Projects\ArduinoBot\ControllerSlave\ControllerSlave.ino"
+#include "f:\Users\Demon\documents\visual studio 2013\Projects\ArduinoBot\ControllerSlave\DistanceLogic.ino"
+#include "f:\Users\Demon\documents\visual studio 2013\Projects\ArduinoBot\ControllerSlave\EngineLogic.ino"
+#include "f:\Users\Demon\documents\visual studio 2013\Projects\ArduinoBot\ControllerSlave\LightLogic.ino"
+#include "f:\Users\Demon\documents\visual studio 2013\Projects\ArduinoBot\ControllerSlave\SerialParcer.ino"
+#include "f:\Users\Demon\documents\visual studio 2013\Projects\ArduinoBot\ControllerSlave\ServoLogic.ino"
+#include "f:\Users\Demon\documents\visual studio 2013\Projects\ArduinoBot\ControllerSlave\SystemLogic.ino"
+#include "f:\Users\Demon\documents\visual studio 2013\Projects\ArduinoBot\ControllerSlave\Test.ino"
 #endif

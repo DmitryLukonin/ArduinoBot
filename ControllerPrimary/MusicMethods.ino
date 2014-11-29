@@ -2,7 +2,7 @@
 
 // Plays a full file from beginning to end with no pause.
 void playcomplete(char *name) {
-  playfile(name);
+	playfile(name);
 }
 
 void playfile(char *name) {
@@ -12,6 +12,7 @@ void playfile(char *name) {
     }
   
 	tmrpcm.play(name);
+	PrintText("Playing " + String(name));
    // tmrpcm.play("BENHILL.WAV"); 
 
     // ok time to play! start playback

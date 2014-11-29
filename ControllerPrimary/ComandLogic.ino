@@ -1,16 +1,23 @@
 void BotOnPauseOnOff()
 {
 			if(BotPause==true)
+			{			
+				BotPause=false;
+			}
+			else
+			{				
+				BotPause=true;
+			}
+
+			
+			if (BotPause == true)
 			{
 				playcomplete("crystal.wav");
-				BotPause=false;
 			}
 			else
 			{
 				playcomplete("Wov3.wav");
-				BotPause=true;
 			}
-			
 }
 
 
